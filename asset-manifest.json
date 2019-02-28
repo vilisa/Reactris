@@ -1,13 +1,13 @@
 {
-  "main.css": "/Reactris/static/css/main.11940c8c.chunk.css",
-  "main.js": "/Reactris/static/js/main.d5617cb6.chunk.js",
-  "main.js.map": "/Reactris/static/js/main.d5617cb6.chunk.js.map",
-  "runtime~main.js": "/Reactris/static/js/runtime~main.e20ffba0.js",
-  "runtime~main.js.map": "/Reactris/static/js/runtime~main.e20ffba0.js.map",
-  "static/js/2.d6cbbdcb.chunk.js": "/Reactris/static/js/2.d6cbbdcb.chunk.js",
-  "static/js/2.d6cbbdcb.chunk.js.map": "/Reactris/static/js/2.d6cbbdcb.chunk.js.map",
-  "index.html": "/Reactris/index.html",
-  "precache-manifest.904328ae2df75f5206e51535ecc6f0ae.js": "/Reactris/precache-manifest.904328ae2df75f5206e51535ecc6f0ae.js",
-  "service-worker.js": "/Reactris/service-worker.js",
-  "static/css/main.11940c8c.chunk.css.map": "/Reactris/static/css/main.11940c8c.chunk.css.map"
+  "main.css": "/Reactris/public/static/css/main.11940c8c.chunk.css",
+  "main.js": "/Reactris/public/static/js/main.850c273e.chunk.js",
+  "main.js.map": "/Reactris/public/static/js/main.850c273e.chunk.js.map",
+  "runtime~main.js": "/Reactris/public/static/js/runtime~main.c2c60c8f.js",
+  "runtime~main.js.map": "/Reactris/public/static/js/runtime~main.c2c60c8f.js.map",
+  "static/js/2.d6cbbdcb.chunk.js": "/Reactris/public/static/js/2.d6cbbdcb.chunk.js",
+  "static/js/2.d6cbbdcb.chunk.js.map": "/Reactris/public/static/js/2.d6cbbdcb.chunk.js.map",
+  "index.html": "/Reactris/public/index.html",
+  "precache-manifest.7d539d5f39bbc674fd90175a8cbd6651.js": "/Reactris/public/precache-manifest.7d539d5f39bbc674fd90175a8cbd6651.js",
+  "service-worker.js": "/Reactris/public/service-worker.js",
+  "static/css/main.11940c8c.chunk.css.map": "/Reactris/public/static/css/main.11940c8c.chunk.css.map"
 }
