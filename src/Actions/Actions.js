@@ -1,10 +1,10 @@
-import Constants from '../Constants/Constants';
+import Settings from '../Settings/Settings';
 
-const { actions } = Constants;
+const { actions } = Settings;
 
 const AppActions = {
   validateMove(state){
-    if(!Constants.states.PAUSED){
+    if(!Settings.states.PAUSED){
       return true;
     }
     return false;
@@ -54,8 +54,8 @@ const AppActions = {
   },
 
   pause() {
-    Constants.states.PAUSED = !Constants.states.PAUSED;
-    (Constants.states.PAUSED ? console.log('Pause') : console.log('Resume') );
+    Settings.states.PAUSED = !Settings.states.PAUSED;
+    (Settings.states.PAUSED ? console.log('Pause') : console.log('Resume') );
   },
 };
 

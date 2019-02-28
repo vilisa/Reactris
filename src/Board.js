@@ -1,8 +1,8 @@
-import Constants from './Constants/Constants';
+import Settings from './Settings/Settings';
 
 const Board = {
     getNewBoard(){
-        return Array(Constants.GAME_HEIGHT).fill(null).map(_ => Array(Constants.GAME_WIDTH).fill(0));
+        return Array(Settings.GAME_HEIGHT).fill(null).map(_ => Array(Settings.GAME_WIDTH).fill(0));
     },
 
     drawBoard(state){

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Reactris.css';
-import Constants from './Constants/Constants.js';
+import Settings from './Settings/Settings.js';
 import Actions from './Actions/Actions.js';
 import Board from './Board.js';
 import Pieces from './Pieces.js';

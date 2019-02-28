@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './Reactris.css';
-import Constants from './Constants/Constants.js';
+import Settings from './Settings/Settings.js';
 
 class Info extends Component {
   paused(){
-    if(Constants.states.PAUSED){
+    if(Settings.states.PAUSED){
       return (
         <div class="paused">
           Paused
