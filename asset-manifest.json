@@ -1,13 +1,13 @@
 {
-  "main.css": "/Reactris/public/static/css/main.11940c8c.chunk.css",
-  "main.js": "/Reactris/public/static/js/main.850c273e.chunk.js",
-  "main.js.map": "/Reactris/public/static/js/main.850c273e.chunk.js.map",
+  "main.css": "/Reactris/public/static/css/main.0d802338.chunk.css",
+  "main.js": "/Reactris/public/static/js/main.0b50ca17.chunk.js",
+  "main.js.map": "/Reactris/public/static/js/main.0b50ca17.chunk.js.map",
   "runtime~main.js": "/Reactris/public/static/js/runtime~main.c2c60c8f.js",
   "runtime~main.js.map": "/Reactris/public/static/js/runtime~main.c2c60c8f.js.map",
-  "static/js/2.d6cbbdcb.chunk.js": "/Reactris/public/static/js/2.d6cbbdcb.chunk.js",
-  "static/js/2.d6cbbdcb.chunk.js.map": "/Reactris/public/static/js/2.d6cbbdcb.chunk.js.map",
+  "static/js/2.5ec21d73.chunk.js": "/Reactris/public/static/js/2.5ec21d73.chunk.js",
+  "static/js/2.5ec21d73.chunk.js.map": "/Reactris/public/static/js/2.5ec21d73.chunk.js.map",
   "index.html": "/Reactris/public/index.html",
-  "precache-manifest.7d539d5f39bbc674fd90175a8cbd6651.js": "/Reactris/public/precache-manifest.7d539d5f39bbc674fd90175a8cbd6651.js",
+  "precache-manifest.4fc1c1e72e7488bfd9e35229e13ccb00.js": "/Reactris/public/precache-manifest.4fc1c1e72e7488bfd9e35229e13ccb00.js",
   "service-worker.js": "/Reactris/public/service-worker.js",
-  "static/css/main.11940c8c.chunk.css.map": "/Reactris/public/static/css/main.11940c8c.chunk.css.map"
+  "static/css/main.0d802338.chunk.css.map": "/Reactris/public/static/css/main.0d802338.chunk.css.map"
 }
