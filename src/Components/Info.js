@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './Reactris.css';
-import Settings from './Settings/Settings.js';
+import './css/info.css';
+import Settings from '../Settings/Settings.js';
 
 class Info extends Component {
   paused(){

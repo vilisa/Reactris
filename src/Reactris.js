@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './Reactris.css';
 import Settings from './Settings/Settings.js';
 import Actions from './Actions/Actions.js';
-import Board from './Board.js';
-import Pieces from './Pieces.js';
-import Info from './Info.js';
+import BoardController from './Components/BoardController.js';
+import BoardRenderer from './Components/BoardRenderer.js';
+import Pieces from './Components/Pieces.js';
+import Info from './Components/Info.js';
 
 class Reactris extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Reactris extends Component {
       score: 0,
       linesCleared: 0,
 
-      board: Board.getNewBoard(),
+      board: BoardController.getNewBoard(),
 
       landed: [[0,0,0,0,0,0,0,0,0,0],
                [0,0,0,0,0,0,0,0,0,0],
@@ -37,7 +38,7 @@ class Reactris extends Component {
 
     }
 
-    this.drawBoard();
+    this.state.board = BoardController.drawBoard(this.state);
   }
 
   componentDidMount(){
@@ -47,36 +48,23 @@ class Reactris extends Component {
   }
 
   drawBoard(){
-    this.setState({board: Board.drawBoard(this.state)});
+    this.setState({board: BoardController.drawBoard(this.state)});
   }
 
   setPieceState(state){
     this.setState({piece: state});
   }
 
-  drawCol(value) {
-    if (value === 0) {
-      return <td class="empty"></td>;
-    }
-    return <td class="filled"></td>;
+  setLanded(state){
+    this.setState({landed: state});
   }
 
   render() {
     return (
       <div class="reactrisContainer">
-        <table>
-          <tbody>
-            {this.state.board.map(row => (
-              <tr key={row.id}>
-
-                {row.map(col => (
-                  this.drawCol(col)
-                ))}
-
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div class="board">
+          <BoardRenderer state={this.state.board}/>
+        </div>
         
         <div class="infoTab">
           <Info/>
@@ -106,6 +94,10 @@ class Reactris extends Component {
           break;
         case 'Space':
           this.setPieceState(Actions.hardDrop(this.state));
+          break;
+        //For TESTING
+        case 'Enter':
+          this.setLanded(Actions.landPiece(this.state));
           break;
         case 'Escape':
           Actions.pause();

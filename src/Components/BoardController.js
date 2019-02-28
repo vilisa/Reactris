@@ -1,6 +1,6 @@
-import Settings from './Settings/Settings';
+import Settings from '../Settings/Settings';
 
-const Board = {
+const BoardController = {
     getNewBoard(){
         return Array(Settings.GAME_HEIGHT).fill(null).map(_ => Array(Settings.GAME_WIDTH).fill(0));
     },
@@ -31,7 +31,7 @@ const Board = {
           }
         }
         return newBoard;
-      }
+      },
 };
 
-export default Board;
+export default BoardController;

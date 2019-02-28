@@ -5,7 +5,10 @@ const piece_O = {
   ],
   pos_y: 0,
   pos_x: 4,
-  rotation: 0
+  rotation: 0,
+  potential_pos_y: 0,
+  potential_pos_x: 0,
+  potential_rotation: 0
 };
 
 const piece_J = {
@@ -28,7 +31,10 @@ const piece_J = {
   ],
   pos_y: 0,
   pos_x: 4,
-  rotation: 0
+  rotation: 0,
+  potential_pos_y: 0,
+  potential_pos_x: 0,
+  potential_rotation: 0
 };
 
 const piece_L = {
@@ -51,7 +57,10 @@ const piece_L = {
   ],
   pos_y: 0,
   pos_x: 4,
-  rotation: 0
+  rotation: 0,
+  potential_pos_y: 0,
+  potential_pos_x: 0,
+  potential_rotation: 0,
 };
 
 const piece_T = {
@@ -72,7 +81,10 @@ const piece_T = {
   ],
   pos_y: 0,
   pos_x: 4,
-  rotation: 0
+  rotation: 0,
+  potential_pos_y: 0,
+  potential_pos_x: 0,
+  potential_rotation: 0
 };
 
 const piece_I = {
@@ -86,7 +98,10 @@ const piece_I = {
   ],
   pos_y: 0,
   pos_x: 4,
-  rotation: 0
+  rotation: 0,
+  potential_pos_y: 0,
+  potential_pos_x: 0,
+  potential_rotation: 0
 };
 
 const piece_Z = {
@@ -101,7 +116,10 @@ const piece_Z = {
   ],
   pos_y: 0,
   pos_x: 4,
-  rotation: 0
+  rotation: 0,
+  potential_pos_y: 0,
+  potential_pos_x: 0,
+  potential_rotation: 0
 };
 
 const piece_S = {
@@ -116,7 +134,10 @@ const piece_S = {
   ],
   pos_y: 0,
   pos_x: 4,
-  rotation: 0
+  rotation: 0,
+  potential_pos_y: 0,
+  potential_pos_x: 0,
+  potential_rotation: 0
 };
 
 const Pieces = {
@@ -148,11 +169,11 @@ const Pieces = {
       default:
         break;
     }
-      //Check if can be rotated
-      if(piece.shapes.length <= rotation){
-        piece.rotation = rotation;
-      }
-      return piece;
+    //Check if can be rotated
+    if(piece.shapes.length <= rotation){
+      piece.rotation = rotation;
+    }
+    return piece;
   },
 
   getPieces(){
