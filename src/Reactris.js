@@ -6,6 +6,7 @@ import BoardController from './Components/BoardController.js';
 import BoardRenderer from './Components/BoardRenderer.js';
 import Pieces from './Components/Pieces.js';
 import Info from './Components/Info.js';
+import Controls from './Components/Controls.js';
 
 class Reactris extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class Reactris extends Component {
     this.state = {
       score: 0,
       linesCleared: 0,
+      paused: false,
 
       board: BoardController.getNewBoard(),
 
@@ -48,11 +50,17 @@ class Reactris extends Component {
   }
 
   drawBoard(){
+    console.log('drawboard');
     this.setState({board: BoardController.drawBoard(this.state)});
   }
 
   setPieceState(state){
     this.setState({piece: state});
+    this.drawBoard();
+  }
+
+  setStateVariable(value){
+    this.setState(value);
   }
 
   setLanded(state){
@@ -61,16 +69,22 @@ class Reactris extends Component {
 
   render() {
     return (
-      <div class="reactrisContainer">
-        <div class="board">
-          <BoardRenderer state={this.state.board}/>
-        </div>
-        
-        <div class="infoTab">
-          <Info/>
-        </div>
+      <center>
+        <div class="main-container">
+            <div class="reactris-container">
+              <div class="screen">
+                <BoardRenderer state={this.state.board}/>
+                <div class="info">
+                  <Info state={this.state}/>
+                </div>
+              </div>
 
-      </div>
+              <div class="controls">
+                <Controls state={this.state} movePiece={p=>{this.setPieceState(p)}} setStateVariable={p=>{this.setStateVariable(p)}}/>
+              </div>
+            </div>
+        </div>
+      </center>
     )
   }
 
@@ -100,7 +114,7 @@ class Reactris extends Component {
           this.setLanded(Actions.landPiece(this.state));
           break;
         case 'Escape':
-          Actions.pause();
+          this.setState({paused: Actions.pause(this.state)});
           break;
         default:
           break;

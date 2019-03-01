@@ -23,9 +23,66 @@
   color: #61dafb;
 }
 
-.infoTab{
-  color: white;
+.main-container{
+  max-width: 342px;
+  padding: 20px;
+  margin-top: 20px;
+  background: rgb(255,190,0);
+  border: 5px solid rgb(240,174,0);
+  border-radius: 10px;
 }
+
+.reactris-container{
+  margin-left: 35px;
+  margin-right: 35px;
+}
+
+.screen{
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 5px;
+  background: #9ead86;
+  border: 5px solid;
+  border-top-color: currentcolor;
+  border-right-color: currentcolor;
+  border-bottom-color: currentcolor;
+  border-left-color: currentcolor;
+  border-color: #987f0f rgb(255,210,0) rgb(255,205,0) #987f0f;
+}
+
+table{
+  display: inline-block;
+  padding: 0;
+  border-bottom: 5px solid black;
+}
+tr{
+  padding: 0;
+  margin: 0;
+}
+td{
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 2px solid #879372;
+}
+td::after{
+  content: "";
+  display: block;
+  height: 87%;
+  width: 87%;
+  background: #8E9A79;
+  overflow: hidden;
+}
+.filled{
+  border-color: black;
+}
+.filled::after{
+  background: black;
+}
+.empty{
+  border-color: #879372;
+}
+
 
 @keyframes App-logo-spin {
   from {
@@ -33,5 +90,12 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media(max-width: 385px){
+  .reactris-container{
+    margin: 0;
+    border-radius: 0;
   }
 }

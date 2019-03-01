@@ -1,11 +1,9 @@
-import Settings from '../Settings/Settings';
-
 const AppActions = {
   
   validateMove(state){
-    if(!Settings.states.PAUSED 
-      && this.isSpaceAvailable(state)
+    if(!state.paused
       && this.isWithinBoundaries(state)
+      && this.isSpaceAvailable(state)
     ){
       return true;
     }
@@ -21,6 +19,19 @@ const AppActions = {
               '\nx: ' + piece.potential_pos_x  + 
               '\nshape: ' + piece.shapes[piece.potential_rotation]
     );
+
+    /* Reference
+    for (var row = 0; row < tetromino.shape.length; row++) {
+        for (var col = 0; col < tetromino.shape[row].length; col++) {
+            if (tetromino.shape[row][col] != 0) {
+                if (landed[row + tetromino.potentialTopLeft.row] != 0 &&
+                    landed[col + tetromino.potentialTopLeft.col] != 0) {
+                    //the space is taken
+                }
+            }
+        }
+    }
+    */
 
     for (var row = 0; row < piece.shapes[piece.potential_rotation].length; row++) {
       for (var col = 0; col < piece.shapes[piece.potential_rotation][row].length; col++) {
@@ -49,10 +60,10 @@ const AppActions = {
     if(this.validateMove(state)){
       console.log('Down');
       piece.pos_y = state.piece.potential_pos_y;
+    } else {
+      //reset
+      piece.potential_pos_y = piece.pos_y;
     }
-
-    //reset
-    piece.potential_pos_y = piece.pos_y;
     return piece;
   },
 
@@ -64,10 +75,10 @@ const AppActions = {
     if(this.validateMove(state)){
       console.log('Left');
       piece.pos_x = piece.potential_pos_x;
+    } else {
+      //reset
+      piece.potential_pos_x = piece.pos_x;
     }
-
-    //reset
-    piece.potential_pos_x = piece.pos_x;
     return piece;
   },
 
@@ -79,10 +90,10 @@ const AppActions = {
     if(this.validateMove(state)){
       console.log('Right');
       piece.pos_x = piece.potential_pos_x;
+    } else {
+      //reset
+      piece.potential_pos_x = piece.pos_x;
     }
-
-    //reset
-    piece.potential_pos_x = piece.pos_x;
     return piece;
   },
 
@@ -105,16 +116,17 @@ const AppActions = {
     if(this.validateMove(state)){
       console.log('rotate');
       piece.rotation = piece.potential_rotation;
+    } else {
+      //reset
+      piece.potential_rotation = piece.rotation;
     }
-
-    //reset
-    piece.potential_rotation = piece.rotation;
     return piece;
   },
 
-  pause() {
-    Settings.states.PAUSED = !Settings.states.PAUSED;
-    (Settings.states.PAUSED ? console.log('Pause') : console.log('Resume') );
+  pause(state) {
+    state.paused = !state.paused;
+    (state.paused ? console.log('Pause') : console.log('Resume') );
+    return state.paused;
   },
 
   landPiece(state){

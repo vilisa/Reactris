@@ -1,0 +1,31 @@
+.info{
+    height: 15px;
+    padding: 0;
+    margin-left: 1px;
+    margin-right: 1px;
+    color: black;
+    font-size: 15px;
+    font-weight: 800;
+    text-align: left;
+}
+
+.score{
+    float: right;
+    white-space: pre-wrap;
+}
+
+.blink {
+    animation: blink-animation 1s steps(2, start) infinite;
+    -webkit-animation: blink-animation 1s steps(2, start) infinite;
+    font-size: 18px;
+}
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+@-webkit-keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}

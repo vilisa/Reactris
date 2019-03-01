@@ -15,7 +15,6 @@ code {
 
 body {
   background: #20262E;
-  padding: 20px;
   font-family: Helvetica;
 }
 
@@ -42,20 +41,4 @@ h2 {
 
 input {
   margin-right: 5px;
-}
-
-table{
-  display: inline-block;
-}
-
-td{
-  width: 20px;
-  height: 20px;
-  border: 1px solid rgb(220,220,220);
-}
-.filled{
-  background: black;
-}
-.empty{
-  background: rgb(240,240,240);
 }

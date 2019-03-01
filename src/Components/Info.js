@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import './css/info.css';
-import Settings from '../Settings/Settings.js';
 
 class Info extends Component {
   paused(){
-    if(Settings.states.PAUSED){
+    if(this.props.state.paused){
       return (
-        <div class="paused">
-          Paused
-        </div>
+          <span class="blink">
+            ||
+          </span>
       );
     }
   }
@@ -17,6 +16,9 @@ class Info extends Component {
     return (
       <div class="info">
         {this.paused()}
+        <span class="score">
+          Score: 100    Lines: 1
+        </span>
       </div>
     );
   }
