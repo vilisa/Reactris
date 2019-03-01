@@ -26,6 +26,7 @@
 .main-container{
   max-width: 342px;
   padding: 20px;
+  padding-top: 30px;
   margin-top: 20px;
   background: rgb(255,190,0);
   border: 5px solid rgb(240,174,0);
@@ -68,8 +69,9 @@ td{
 td::after{
   content: "";
   display: block;
-  height: 87%;
-  width: 87%;
+  height: 80%;
+  width: 80%;
+  margin: 0 auto;
   background: #8E9A79;
   overflow: hidden;
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Reactris.css';
-import Settings from './Settings/Settings.js';
 import Actions from './Actions/Actions.js';
 import BoardController from './Components/BoardController.js';
 import BoardRenderer from './Components/BoardRenderer.js';
@@ -36,9 +35,11 @@ class Reactris extends Component {
                [0,0,1,0,0,0,0,1,0,0],
                [1,1,1,0,0,0,0,1,0,0]],
 
-      piece: Pieces.getPiece('Z',0)
+      piece: Pieces.getPiece('T',0)
 
     }
+
+    this.prevState = {};
 
     this.state.board = BoardController.drawBoard(this.state);
   }
@@ -49,37 +50,46 @@ class Reactris extends Component {
     //this.startGame();
   }
 
+  componentDidUpdate(){
+    if(this.state.board !== this.prevState.board){
+      //TODO check rows for clean
+    }
+  }
+  
   drawBoard(){
     console.log('drawboard');
     this.setState({board: BoardController.drawBoard(this.state)});
   }
 
   setPieceState(state){
+    this.prevState = this.state;
     this.setState({piece: state});
     this.drawBoard();
   }
 
   setStateVariable(value){
+    this.prevState = this.state;
     this.setState(value);
   }
 
   setLanded(state){
-    this.setState({landed: state});
+    this.prevState = this.state;
+    this.setState({landed: state.landed, score: state.score});
   }
 
   render() {
     return (
       <center>
-        <div class="main-container">
-            <div class="reactris-container">
-              <div class="screen">
+        <div className="main-container">
+            <div className="reactris-container">
+              <div className="screen">
                 <BoardRenderer state={this.state.board}/>
-                <div class="info">
+                <div className="info">
                   <Info state={this.state}/>
                 </div>
               </div>
 
-              <div class="controls">
+              <div className="controls">
                 <Controls state={this.state} movePiece={p=>{this.setPieceState(p)}} setStateVariable={p=>{this.setStateVariable(p)}}/>
               </div>
             </div>

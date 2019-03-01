@@ -2,7 +2,7 @@
   "name": "reactris",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vilisa.github.io/Reactris/public/",
+  "homepage": "https://vilisa.github.io/Reactris/",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.8.3",

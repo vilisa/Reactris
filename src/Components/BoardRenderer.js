@@ -4,9 +4,9 @@ class BoardRenderer extends Component {
 
   drawCol(value) {
     if (value === 0) {
-      return <td class="empty"></td>;
+      return <td className="empty"></td>;
     }
-    return <td class="filled"></td>;
+    return <td className="filled"></td>;
   }
 
   render() {

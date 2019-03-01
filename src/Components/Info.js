@@ -5,7 +5,7 @@ class Info extends Component {
   paused(){
     if(this.props.state.paused){
       return (
-          <span class="blink">
+          <span className="blink">
             ||
           </span>
       );
@@ -14,10 +14,10 @@ class Info extends Component {
 
   render() {
     return (
-      <div class="info">
+      <div className="info">
         {this.paused()}
-        <span class="score">
-          Score: 100    Lines: 1
+        <span className="score">
+          Score: {this.props.state.score}    Lines: {this.props.state.linesCleared}
         </span>
       </div>
     );
