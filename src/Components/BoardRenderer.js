@@ -4,26 +4,24 @@ class BoardRenderer extends Component {
 
   drawCol(value) {
     if (value === 0) {
-      return <td className="empty"></td>;
+      return <div className="col empty"></div>;
     }
-    return <td className="filled"></td>;
+    return <div className="col filled"></div>;
   }
 
   render() {
     return (
-      <table>
-        <tbody>
+      <div className="table">
           {this.props.state.map(row => (
-            <tr key={row.id}>
-
+            <div className="row" key={row.id}>
+            
               {row.map(col => (
                 this.drawCol(col)
               ))}
 
-            </tr>
+            </div>
           ))}
-        </tbody>
-      </table>
+      </div>
     );
   }
 }

@@ -4,7 +4,6 @@ const AppActions = {
   
   validateMove(state){
     if(!state.paused
-      && this.isWithinBoundaries(state)
       && this.isSpaceAvailable(state)
     ){
       return true;
@@ -34,21 +33,39 @@ const AppActions = {
             }
         }
     }
-    */
 
-    for (var row = 0; row < piece.shapes[piece.potential_rotation].length; row++) {
-      for (var col = 0; col < piece.shapes[piece.potential_rotation][row].length; col++) {
-        if (piece.shapes[piece.potential_rotation][row][col] !== 0) {
-          //console.log(piece.shapes[piece.potential_rotation][row][col]);
-          if(landed[row + piece.potential_pos_y] !== 0 && landed[col + piece.potential_pos_x] !== 0){
-           //console.log('Space Taken!');
-            //console.log('row:' + landed[row + piece.potential_pos_y] + 'col:' + landed[col + piece.potential_pos_x]);
-            return true;
-          }
+    */
+/*
+    var width = state.board[0].length;
+    var height = state.board.length;
+
+    for (var row = 0; row < piece.length; row++) {
+      for (var col = 0; col < piece[row].length; col++) {
+        var py = piece.pos_y + row;
+        var px = piece.pos_x + col;
+        if (piece[row][col] && (px < 0 || px >= width)) return false;
+        if (py < 0) continue
+        if (!piece[row][col]) continue;
+        if (!state.board[py] || state.board[py][px] || state.board[py][px] === undefined) return false;
+        //state.board[py][px] = piece[row][col] || state.board[py][px];
+        console.log('can move');
+        return true;
+      }
+    }
+    */
+   for (var row = 0; row < piece.shapes[piece.potential_rotation].length; row++) {
+    for (var col = 0; col < piece.shapes[piece.potential_rotation][row].length; col++) {
+      if (piece.shapes[piece.potential_rotation][row][col] !== 0) {
+        //console.log(piece.shapes[piece.potential_rotation][row][col]);
+        if(landed[row + piece.potential_pos_y] !== 0 && landed[col + piece.potential_pos_x] !== 0){
+         //console.log('Space Taken!');
+          //console.log('row:' + landed[row + piece.potential_pos_y] + 'col:' + landed[col + piece.potential_pos_x]);
+          return true;
         }
       }
     }
-    return true;
+  }
+  return true;
   },
 
   isWithinBoundaries(state){
