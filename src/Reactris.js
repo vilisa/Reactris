@@ -79,22 +79,20 @@ class Reactris extends Component {
 
   render() {
     return (
-      <center>
-        <div className="main-container">
-            <div className="reactris-container">
-              <div className="screen">
-                <BoardRenderer state={this.state.board}/>
-                <div className="info">
-                  <Info state={this.state}/>
-                </div>
-              </div>
-
-              <div className="controls">
-                <Controls state={this.state} movePiece={p=>{this.setPieceState(p)}} setStateVariable={p=>{this.setStateVariable(p)}}/>
+      <div className="main-container">
+          <div className="reactris-container">
+            <div className="screen">
+              <BoardRenderer state={this.state.board}/>
+              <div className="info">
+                <Info state={this.state}/>
               </div>
             </div>
-        </div>
-      </center>
+
+            <div className="controls">
+              <Controls state={this.state} movePiece={p=>{this.setPieceState(p)}} setStateVariable={p=>{this.setStateVariable(p)}}/>
+            </div>
+          </div>
+      </div>
     )
   }
 

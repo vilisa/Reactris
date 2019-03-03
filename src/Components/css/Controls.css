@@ -1,8 +1,8 @@
 .controls .container{
-    display: flex;
-    height: 150px;
     position: relative;
     text-align: left;
+    overflow: auto;
+    padding: 2px;
 }
 .controls .spacer{
     position: relative;
@@ -15,6 +15,7 @@
 .controls .buttons{
     font-size: 13px;
     font-weight: 700;
+    float: left;
 }
 .controls .button{
     display: inline-block;
@@ -39,10 +40,8 @@
 
 
 .controls .arrows{
-    max-width: 150px;
-    position: absolute;
-    right: 0;
-    top: 15px;
+    margin: 15px;
+    float: right;
 }
 .controls .arrows .left-right{
     display: flex;
