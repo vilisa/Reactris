@@ -1,13 +1,13 @@
 {
-  "main.css": "/Reactris/static/css/main.402db096.chunk.css",
-  "main.js": "/Reactris/static/js/main.1fb7af44.chunk.js",
-  "main.js.map": "/Reactris/static/js/main.1fb7af44.chunk.js.map",
+  "main.css": "/Reactris/static/css/main.5e717065.chunk.css",
+  "main.js": "/Reactris/static/js/main.16abfba0.chunk.js",
+  "main.js.map": "/Reactris/static/js/main.16abfba0.chunk.js.map",
   "runtime~main.js": "/Reactris/static/js/runtime~main.e20ffba0.js",
   "runtime~main.js.map": "/Reactris/static/js/runtime~main.e20ffba0.js.map",
   "static/js/2.5ec21d73.chunk.js": "/Reactris/static/js/2.5ec21d73.chunk.js",
   "static/js/2.5ec21d73.chunk.js.map": "/Reactris/static/js/2.5ec21d73.chunk.js.map",
   "index.html": "/Reactris/index.html",
-  "precache-manifest.c3fc9af8fc6db7809d62cfa000cfc143.js": "/Reactris/precache-manifest.c3fc9af8fc6db7809d62cfa000cfc143.js",
+  "precache-manifest.94aef7383ad823620d35cb0293d79ac2.js": "/Reactris/precache-manifest.94aef7383ad823620d35cb0293d79ac2.js",
   "service-worker.js": "/Reactris/service-worker.js",
-  "static/css/main.402db096.chunk.css.map": "/Reactris/static/css/main.402db096.chunk.css.map"
+  "static/css/main.5e717065.chunk.css.map": "/Reactris/static/css/main.5e717065.chunk.css.map"
 }
