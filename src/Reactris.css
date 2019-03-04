@@ -8,26 +8,23 @@
   pointer-events: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 .main-container{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.gameboy{
+  display: inline-block;
   max-width: 342px;
-  padding: 20px;
+  padding: 45px;
   padding-top: 30px;
-  margin: 0 auto;
+  padding-bottom: 20px;
   margin-top: 20px;
   background: rgb(255,190,0);
   border: 5px solid rgb(240,174,0);
@@ -35,11 +32,15 @@
 }
 
 .reactris-container{
-  margin-left: 35px;
-  margin-right: 35px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0;
 }
 
 .screen{
+  height: 100%;
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
@@ -52,7 +53,16 @@
   border-left-color: currentcolor;
   border-color: #987f0f rgb(255,210,0) rgb(255,205,0) #987f0f;
 }
+.scaler{
+  position: relative;
+  width: calc(41.655vh);
+  height: 100%;
+  margin: 0 auto;
+}
 .table{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   padding: 0;
   border-bottom: 5px solid black;
 }
@@ -61,10 +71,10 @@
   justify-content: center;
   padding: 0;
   margin: 0;
+  height: 100%;
 }
 .col{
-  width: calc(1vw + 1vh);
-  padding-top: calc(0.85vw + 1vh);
+  width: 100%;
   position: relative;
   margin: 0;
   border: 2px solid #879372;
@@ -90,6 +100,7 @@
 }
 
 
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -100,15 +111,16 @@
 }
 
 @media(max-width: 768px){
-  #root{
-    display: flex;
-  }
   .main-container{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .gameboy{
     max-width: 100%;
     flex: 1;
     margin: 0;
-    padding-left: 0;
-    padding-right: 0;
     border-radius: 0;
   }
 }

@@ -80,18 +80,20 @@ class Reactris extends Component {
   render() {
     return (
       <div className="main-container">
+        <div className="gameboy">
           <div className="reactris-container">
-            <div className="screen">
-              <BoardRenderer state={this.state.board}/>
-              <div className="info">
+              <div className="screen">
+                <div className="scaler">
+                  <BoardRenderer state={this.state.board}/>
+                </div>
                 <Info state={this.state}/>
               </div>
-            </div>
 
             <div className="controls">
               <Controls state={this.state} movePiece={p=>{this.setPieceState(p)}} setStateVariable={p=>{this.setStateVariable(p)}}/>
             </div>
           </div>
+        </div>
       </div>
     )
   }
@@ -135,32 +137,8 @@ class Reactris extends Component {
 export default Reactris;
 
 /*
-<table>
-          <tbody>
-            {this.state.board.map(row => (
-              <tr key={row.id}>
-
-                {row.map(col => (
-                  this.drawCol(col)
-                ))}
-
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <button onClick={() => this.dropPiece(this.state.piece)}>drop</button>
-
-        <table>
-          <tbody>
-            {this.state.landed.map(row => (
-              <tr key={row.id}>
-
-                {row.map(col => (
-                  this.drawCol(col)
-                ))}
-
-              </tr>
-            ))}
-          </tbody>
-        </table>
+<div className="screen">
+                <BoardRenderer state={this.state.board}/>
+                <Info state={this.state}/>
+              </div>
 */
