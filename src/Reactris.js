@@ -15,7 +15,7 @@ class Reactris extends Component {
       score: 0,
       linesCleared: 0,
       paused: false,
-
+      
       board: BoardController.getNewBoard(),
 
       landed: [[0,0,0,0,0,0,0,0,0,0],
@@ -94,6 +94,10 @@ class Reactris extends Component {
             </div>
           </div>
         </div>
+        <div className="debug-board">
+          Landed Debug
+          <BoardRenderer state={this.state.landed}/>
+        </div>
       </div>
     )
   }
@@ -121,7 +125,7 @@ class Reactris extends Component {
           break;
         //For TESTING
         case 'Enter':
-          this.setLanded(Actions.landPiece(this.state));
+          this.setPieceState(Actions.spawnPiece(this.state));
           break;
         case 'Escape':
           this.setState({paused: Actions.pause(this.state)});

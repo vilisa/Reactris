@@ -207,20 +207,6 @@ const Pieces = {
     return piece;
   },
 
-  getPieceWidth(piece){
-    
-  },
-
-  getPieceHeight(piece){
-    let height = 0;
-    for (var row = 0; row < piece.shapes[piece.potential_rotation].length; row++) {
-      if(piece.shapes[piece.potential_rotation][row].includes(1)){
-        height++;
-      }
-    }
-    return height;
-  },
-
   getPieces(){
     let pieces = [];
     return pieces;

@@ -3,9 +3,7 @@ import Pieces from '../Components/Pieces.js';
 const AppActions = {
   
   validateMove(state){
-    if(!state.paused
-      && this.isSpaceAvailable(state)
-    ){
+    if(!state.paused && state.piece && this.isSpaceAvailable(state)){
       return true;
     }
     return false;
@@ -14,21 +12,24 @@ const AppActions = {
   isSpaceAvailable(state){
     var piece = state.piece;
     var landed = state.landed;
-
-    for (let row = 0; row < piece.shapes[piece.potential_rotation].length; row++) {
-      for (let col = 0; col < piece.shapes[piece.potential_rotation][row].length; col++) {
-        if (piece.shapes[piece.potential_rotation][row][col] !== 0) {
-          if(landed[row + piece.potential_pos_y][col + piece.potential_pos_x] !== 0){
-            //Space not available
-            return false;
+    try {
+      for (let row = 0; row < piece.shapes[piece.potential_rotation].length; row++) {
+        for (let col = 0; col < piece.shapes[piece.potential_rotation][row].length; col++) {
+          if (piece.shapes[piece.potential_rotation][row][col] !== 0) {
+            if(landed[row + piece.potential_pos_y][col + piece.potential_pos_x] !== 0){
+              //Space not available
+              return false;
+            }
           }
         }
       }
+      return true;
+    } catch (error) {
+      return false;
     }
-    return true;
   },
 
-  /*
+  /*gi
   isWithinBoundaries(state){
     var piece = state.piece;
     var height = state.board.length;
@@ -62,22 +63,20 @@ const AppActions = {
 
   moveDown(state) {
     var piece = state.piece;
-
     piece.potential_pos_y = state.piece.pos_y + 1;
 
     if(this.validateMove(state)){
       console.log('Down');
       piece.pos_y = state.piece.potential_pos_y;
     } else {
-      //reset
-      piece.potential_pos_y = piece.pos_y;
+      //cant move down, land the block in place
+      this.landPiece(state);
     }
     return piece;
   },
 
   moveLeft(state) {
     var piece = state.piece;
-
     piece.potential_pos_x = piece.pos_x - 1;
 
     if(this.validateMove(state)){
@@ -92,7 +91,6 @@ const AppActions = {
 
   moveRight(state) {
     var piece = state.piece;
-
     piece.potential_pos_x = piece.pos_x  + 1;
 
     if(this.validateMove(state)){
@@ -164,7 +162,14 @@ const AppActions = {
     return state.paused;
   },
 
+  clearPiece(state){
+    state.piece = null;
+    return state.piece; 
+  },
+
   landPiece(state){
+    if(!state.piece) return;
+
     console.log('land piece');
     var piece = state.piece;
     var landed = state.landed;
@@ -178,7 +183,15 @@ const AppActions = {
       }
     }
     state.score = state.score + 10;
+    state.piece = this.clearPiece(state);
     return state;
+  },
+
+  spawnPiece(state){
+    var list = ['O', 'J', 'L', 'I', 'T', 'Z', 'S'];
+    var rand = Math.floor(Math.random() * 7);
+    console.log('spawn piece: ' + list[rand]);
+    return Pieces.getPiece(list[rand], 0);
   }
 };
 
