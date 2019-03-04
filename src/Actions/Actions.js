@@ -14,60 +14,21 @@ const AppActions = {
   isSpaceAvailable(state){
     var piece = state.piece;
     var landed = state.landed;
-/*
-    console.log('r: ' + piece.potential_rotation + 
-              '\ny: ' + piece.potential_pos_y + 
-              '\nx: ' + piece.potential_pos_x  + 
-              '\nshape: ' + piece.shapes[piece.potential_rotation]
-    );
-*/
 
-    /* Reference
-    for (var row = 0; row < tetromino.shape.length; row++) {
-        for (var col = 0; col < tetromino.shape[row].length; col++) {
-            if (tetromino.shape[row][col] != 0) {
-                if (landed[row + tetromino.potentialTopLeft.row] != 0 &&
-                    landed[col + tetromino.potentialTopLeft.col] != 0) {
-                    //the space is taken
-                }
-            }
-        }
-    }
-
-    */
-/*
-    var width = state.board[0].length;
-    var height = state.board.length;
-
-    for (var row = 0; row < piece.length; row++) {
-      for (var col = 0; col < piece[row].length; col++) {
-        var py = piece.pos_y + row;
-        var px = piece.pos_x + col;
-        if (piece[row][col] && (px < 0 || px >= width)) return false;
-        if (py < 0) continue
-        if (!piece[row][col]) continue;
-        if (!state.board[py] || state.board[py][px] || state.board[py][px] === undefined) return false;
-        //state.board[py][px] = piece[row][col] || state.board[py][px];
-        console.log('can move');
-        return true;
-      }
-    }
-    */
-   for (var row = 0; row < piece.shapes[piece.potential_rotation].length; row++) {
-    for (var col = 0; col < piece.shapes[piece.potential_rotation][row].length; col++) {
-      if (piece.shapes[piece.potential_rotation][row][col] !== 0) {
-        //console.log(piece.shapes[piece.potential_rotation][row][col]);
-        if(landed[row + piece.potential_pos_y] !== 0 && landed[col + piece.potential_pos_x] !== 0){
-         //console.log('Space Taken!');
-          //console.log('row:' + landed[row + piece.potential_pos_y] + 'col:' + landed[col + piece.potential_pos_x]);
-          return true;
+    for (let row = 0; row < piece.shapes[piece.potential_rotation].length; row++) {
+      for (let col = 0; col < piece.shapes[piece.potential_rotation][row].length; col++) {
+        if (piece.shapes[piece.potential_rotation][row][col] !== 0) {
+          if(landed[row + piece.potential_pos_y][col + piece.potential_pos_x] !== 0){
+            //Space not available
+            return false;
+          }
         }
       }
     }
-  }
-  return true;
+    return true;
   },
 
+  /*
   isWithinBoundaries(state){
     var piece = state.piece;
     var height = state.board.length;
@@ -97,6 +58,7 @@ const AppActions = {
     }
     return true;
   },
+  */
 
   moveDown(state) {
     var piece = state.piece;
