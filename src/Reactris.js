@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Reactris.css';
+import Settings from './Settings/Settings.js';
 import Actions from './Actions/Actions.js';
 import BoardController from './Components/BoardController.js';
 import BoardRenderer from './Components/BoardRenderer.js';
@@ -83,7 +84,7 @@ class Reactris extends Component {
         <div className="gameboy">
           <div className="reactris-container">
               <div className="screen">
-                <div className="scaler">
+                <div id="scaler">
                   <BoardRenderer state={this.state.board}/>
                 </div>
                 <Info state={this.state}/>
@@ -103,6 +104,11 @@ class Reactris extends Component {
   }
 
   attachEventListeners() {
+    //Window Rezise
+    window.onload = () => {BoardController.scaleBoard()};
+    window.addEventListener("resize", BoardController.scaleBoard.bind(this));
+
+    //Keyboard
     document.addEventListener('keydown', (event) => {
       if(!this.state.piece) {
         return;

@@ -32,6 +32,12 @@ const BoardController = {
         }
         return newBoard;
       },
+
+      scaleBoard(){
+        let el = document.getElementById('scaler');
+        let ratio = Settings.GAME_WIDTH / Settings.GAME_HEIGHT;
+        el.style.width = el.offsetHeight * ratio + 'px';
+      },
 };
 
 export default BoardController;
