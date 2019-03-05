@@ -15,7 +15,6 @@
 
 .gameboy{
   display: inline-block;
-  max-width: 342px;
   padding: 45px;
   padding-top: 30px;
   padding-bottom: 20px;
@@ -101,6 +100,7 @@
   font-size: 12px;
   width: 100px !important; 
   height: 160px !important;
+  padding-bottom: 20px;
 }
 
 

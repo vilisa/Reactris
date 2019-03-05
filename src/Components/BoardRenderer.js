@@ -12,15 +12,15 @@ class BoardRenderer extends Component {
   render() {
     return (
       <div className="table">
-          {this.props.state.map(row => (
-            <div className="row" key={row.id}>
-            
-              {row.map(col => (
-                this.drawCol(col)
-              ))}
+        {this.props.state.map(row => (
+          <div className="row" key={row.id}>
+          
+            {row.map(col => (
+              this.drawCol(col)
+            ))}
 
-            </div>
-          ))}
+          </div>
+        ))}
       </div>
     );
   }

@@ -8,6 +8,9 @@ import Pieces from './Components/Pieces.js';
 import Info from './Components/Info.js';
 import Controls from './Components/Controls.js';
 
+import Pieces2 from './Pieces/Pieces2.js';
+import Piece from './Pieces/Piece.js';
+
 class Reactris extends Component {
   constructor(props) {
     super(props)
@@ -19,22 +22,7 @@ class Reactris extends Component {
       
       board: BoardController.getNewBoard(),
 
-      landed: [[0,0,0,0,0,0,0,0,0,0],
-               [0,0,0,0,0,0,0,0,0,0],
-               [0,0,0,0,0,0,0,0,0,0],
-               [0,0,0,0,0,0,0,0,0,0],
-               [0,0,0,0,0,0,0,0,0,0],
-               [0,0,0,0,0,0,0,0,0,0],
-               [0,0,0,0,0,0,0,0,0,0],
-               [0,0,0,0,0,0,0,0,0,0],
-               [0,0,0,0,0,0,0,0,0,0],
-               [0,0,0,0,0,0,0,0,0,0],
-               [0,0,0,0,0,0,0,0,0,0],
-               [0,0,0,0,0,0,0,0,0,0],
-               [0,0,0,0,0,0,0,1,0,0],
-               [0,0,0,0,0,0,0,1,0,0],
-               [0,0,1,0,0,0,0,1,0,0],
-               [1,1,1,0,0,0,0,1,0,0]],
+      landed: BoardController.getNewBoard(),
 
       piece: Pieces.getPiece('T',0)
 
@@ -43,6 +31,11 @@ class Reactris extends Component {
     this.prevState = {};
 
     this.state.board = BoardController.drawBoard(this.state);
+
+    var p = new Piece('Z',1);
+    var p2 = Pieces2.getPiece('Z', 1);
+    console.log(p);
+    console.log(p2);
   }
 
   componentDidMount(){
@@ -83,13 +76,12 @@ class Reactris extends Component {
       <div className="main-container">
         <div className="gameboy">
           <div className="reactris-container">
-              <div className="screen">
-                <div id="scaler">
-                  <BoardRenderer state={this.state.board}/>
-                </div>
-                <Info state={this.state}/>
+            <div className="screen">
+              <div id="scaler">
+                <BoardRenderer state={this.state.board}/>
               </div>
-
+              <Info state={this.state}/>
+            </div>
             <div className="controls">
               <Controls state={this.state} movePiece={p=>{this.setPieceState(p)}} setStateVariable={p=>{this.setStateVariable(p)}}/>
             </div>

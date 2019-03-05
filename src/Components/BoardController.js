@@ -1,11 +1,18 @@
 import Settings from '../Settings/Settings';
 
-const BoardController = {
-    getNewBoard(){
-        return Array(Settings.GAME_HEIGHT).fill(null).map(_ => Array(Settings.GAME_WIDTH).fill(0));
-    },
+class BoardController {
 
-    drawBoard(state){
+    /*
+    * returns a new empty 10:16 board, can be changed in settings
+    */
+    static getNewBoard(){
+        return Array(Settings.GAME_HEIGHT).fill(null).map(_ => Array(Settings.GAME_WIDTH).fill(0));
+    }
+
+    /*
+    * helper function to calculate boards current state, with piece position and landed blocks
+    */
+    static drawBoard(state){
         var newBoard = this.getNewBoard();
         var landed = state.landed;
         var piece = state.piece;
@@ -31,13 +38,13 @@ const BoardController = {
           }
         }
         return newBoard;
-      },
+      }
 
-      scaleBoard(){
+      static scaleBoard(){
         let el = document.getElementById('scaler');
         let ratio = Settings.GAME_WIDTH / Settings.GAME_HEIGHT;
         el.style.width = el.offsetHeight * ratio + 'px';
-      },
+      }
 };
 
 export default BoardController;
