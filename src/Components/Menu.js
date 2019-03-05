@@ -8,9 +8,12 @@ class Menu extends Component {
     return (
       <div className="menu-container">
         <div className="menu">
-          width: {Settings.GAME_WIDTH}
-          <br/>
-          height: {Settings.GAME_HEIGHT}
+          <h1>Paused</h1>
+          <div className="body">
+            width: {Settings.GAME_WIDTH}
+            <br/>
+            height: {Settings.GAME_HEIGHT}
+          </div>
         </div>
       </div>
     );
