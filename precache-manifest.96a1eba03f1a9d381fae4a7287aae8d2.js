@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/Reactris/static/js/runtime~main.e20ffba0.js"
   },
   {
-    "revision": "dbbefafd12d257fe6a9e",
-    "url": "/Reactris/static/js/main.dbbefafd.chunk.js"
+    "revision": "2d265a5339110954c2a8",
+    "url": "/Reactris/static/js/main.2d265a53.chunk.js"
   },
   {
     "revision": "5ec21d738fba382f2658",
     "url": "/Reactris/static/js/2.5ec21d73.chunk.js"
   },
   {
-    "revision": "dbbefafd12d257fe6a9e",
-    "url": "/Reactris/static/css/main.228dc749.chunk.css"
+    "revision": "2d265a5339110954c2a8",
+    "url": "/Reactris/static/css/main.b149b84d.chunk.css"
   },
   {
-    "revision": "8b325791f64e1b6e0f84b051a4bb1afc",
+    "revision": "09ff8e37921707f45408333c7a60b4b4",
     "url": "/Reactris/index.html"
   }
 ];
