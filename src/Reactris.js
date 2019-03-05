@@ -7,6 +7,7 @@ import BoardRenderer from './Components/BoardRenderer.js';
 import Pieces from './Components/Pieces.js';
 import Info from './Components/Info.js';
 import Controls from './Components/Controls.js';
+import Menu from './Components/Menu.js';
 
 import Pieces2 from './Pieces/Pieces2.js';
 import Piece from './Pieces/Piece.js';
@@ -25,17 +26,17 @@ class Reactris extends Component {
       landed: BoardController.getNewBoard(),
 
       piece: Pieces.getPiece('T',0)
-
     }
-
-    this.prevState = {};
 
     this.state.board = BoardController.drawBoard(this.state);
 
+    //DEBUG--------
     var p = new Piece('Z',1);
     var p2 = Pieces2.getPiece('Z', 1);
     console.log(p);
     console.log(p2);
+    p.pos_y = 4;
+    //DEBUG--------
   }
 
   componentDidMount(){
@@ -45,9 +46,7 @@ class Reactris extends Component {
   }
 
   componentDidUpdate(){
-    if(this.state.board !== this.prevState.board){
-      //TODO check rows for clean
-    }
+
   }
   
   drawBoard(){
@@ -56,19 +55,24 @@ class Reactris extends Component {
   }
 
   setPieceState(state){
-    this.prevState = this.state;
     this.setState({piece: state});
     this.drawBoard();
   }
 
   setStateVariable(value){
-    this.prevState = this.state;
     this.setState(value);
   }
 
   setLanded(state){
-    this.prevState = this.state;
     this.setState({landed: state.landed, piece: state.piece,  score: state.score});
+  }
+
+  paused(){
+    if(this.state.paused){
+      return (
+          <Menu />
+      );
+    }
   }
 
   render() {
@@ -77,6 +81,7 @@ class Reactris extends Component {
         <div className="gameboy">
           <div className="reactris-container">
             <div className="screen">
+              {this.paused()}
               <div id="scaler">
                 <BoardRenderer state={this.state.board}/>
               </div>

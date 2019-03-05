@@ -1,3 +1,6 @@
+.controls{
+    position: relative;
+}
 .controls .container{
     position: relative;
     text-align: left;

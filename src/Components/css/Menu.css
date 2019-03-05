@@ -1,0 +1,22 @@
+.menu-container{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  margin: -5px;
+  background: rgba(0,0,0,0.5);
+}
+.menu{
+  position: absolute;
+  width: 80%;
+  height: 60%;
+  z-index: 100;
+  background: #8e9d76;
+  border: 5px solid #7F8E67;
+  /*center*/
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 20px;
+  margin: auto;
+}
