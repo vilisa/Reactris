@@ -75,7 +75,7 @@ class Reactris extends Component {
 
   setLanded(state){
     this.prevState = this.state;
-    this.setState({landed: state.landed, score: state.score});
+    this.setState({landed: state.landed, piece: state.piece,  score: state.score});
   }
 
   render() {
@@ -95,9 +95,15 @@ class Reactris extends Component {
             </div>
           </div>
         </div>
-        <div className="debug-board">
-          Landed Debug
-          <BoardRenderer state={this.state.landed}/>
+        <div className="debug-container">
+          <div className="debug-board">
+            Landed Debug
+            <BoardRenderer state={this.state.landed}/>
+          </div>
+          <div className="debug-board">
+            Piece Debug
+            <BoardRenderer state={this.state.piece.shapes[this.state.piece.rotation]}/>
+          </div>
         </div>
       </div>
     )
@@ -118,7 +124,7 @@ class Reactris extends Component {
           this.setPieceState(Actions.rotate(this.state));
           break;
         case 'ArrowDown':
-          this.setPieceState(Actions.moveDown(this.state));
+          this.setState(Actions.moveDown(this.state));
           break;
         case 'ArrowLeft':
           this.setPieceState(Actions.moveLeft(this.state));

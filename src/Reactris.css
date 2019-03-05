@@ -90,15 +90,19 @@
 .empty{
   border-color: #879372;
 }
+.debug-container{
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
 .debug-board{
   color: white;
   font-size: 12px;
   width: 100px !important; 
   height: 160px !important;
-  position: absolute;
-  right: 10px;
-  top: 10px;
 }
+
 
 @media(max-width: 768px){
   .main-container{

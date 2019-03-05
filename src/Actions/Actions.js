@@ -72,7 +72,7 @@ const AppActions = {
       //cant move down, land the block in place
       this.landPiece(state);
     }
-    return piece;
+    return state;
   },
 
   moveLeft(state) {
@@ -183,7 +183,8 @@ const AppActions = {
       }
     }
     state.score = state.score + 10;
-    state.piece = this.clearPiece(state);
+    state.piece = Pieces.getPiece('I', 0);
+    console.log(state.piece);
     return state;
   },
 
