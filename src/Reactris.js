@@ -29,7 +29,7 @@ class Reactris extends Component {
     this.state.board = BoardController.drawBoard(this.state);
 
     //DEBUG--------
-    console.log(this.state.piece);
+    
     //DEBUG--------
   }
 
