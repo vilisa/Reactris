@@ -116,8 +116,8 @@ const S = [
 ];
 
 const Pieces2 = {
-  getPiece(type, rotation){
-    console.log('getPiece(' + type + ',' + rotation + ')');
+  getShape(type, rotation){
+    console.log('getShape(' + type + ',' + rotation + ')');
     var shapes;
     var piece;
 
@@ -146,19 +146,38 @@ const Pieces2 = {
       default:
         break;
     }
-
-    //Check if can be rotated
-    if(shapes.length >= rotation){
-      piece = shapes[rotation];
-    } else {
-      piece = shapes[0];
-    }
+    piece = shapes[rotation];
     return piece;
   },
 
-  getPieces(){
-    let pieces = [];
-    return pieces;
+  getRotations(type){
+    var shapes;
+    switch (type) {
+      case 'O':
+       shapes = O;
+        break;
+      case 'J':
+        shapes = J;
+        break;
+      case 'L':
+        shapes = L;
+        break;
+      case 'I':
+        shapes = I;
+        break;
+      case 'T':
+        shapes = T;
+        break;
+      case 'Z':
+        shapes = Z;
+        break;
+      case 'S':
+       shapes = S;
+        break;
+      default:
+        break;
+    }
+    return shapes;
   }
 };
 

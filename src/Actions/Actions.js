@@ -1,4 +1,5 @@
-import Pieces from '../Components/Pieces.js';
+import Pieces2 from '../Pieces/Pieces2.js';
+import Piece from '../Pieces/Piece.js';
 
 const AppActions = {
   
@@ -13,9 +14,9 @@ const AppActions = {
     var piece = state.piece;
     var landed = state.landed;
     try {
-      for (let row = 0; row < piece.shapes[piece.potential_rotation].length; row++) {
-        for (let col = 0; col < piece.shapes[piece.potential_rotation][row].length; col++) {
-          if (piece.shapes[piece.potential_rotation][row][col] !== 0) {
+      for (let row = 0; row < piece.potential_shape.length; row++) {
+        for (let col = 0; col < piece.potential_shape[row].length; col++) {
+          if (piece.potential_shape[row][col] !== 0) {
             if(landed[row + piece.potential_pos_y][col + piece.potential_pos_x] !== 0){
               //Space not available
               return false;
@@ -30,12 +31,11 @@ const AppActions = {
   },
 
   moveDown(state) {
-    var piece = state.piece;
-    piece.potential_pos_y = state.piece.pos_y + 1;
+    state.piece.potential_pos_y = state.piece.pos_y + 1;
 
     if(this.validateMove(state)){
       console.log('Down');
-      piece.pos_y = state.piece.potential_pos_y;
+      state.piece.pos_y = state.piece.potential_pos_y;
     } else {
       //cant move down, land the block in place
       this.landPiece(state);
@@ -82,16 +82,21 @@ const AppActions = {
     var piece = state.piece;
     piece.potential_rotation = piece.rotation + 1;
 
-    if(piece.potential_rotation >= piece.shapes.length){
+    //check if has next shape
+    if(piece.potential_rotation < piece.shapes.length){
+      piece.potential_shape = piece.shapes[piece.potential_rotation];
+    } else {
       piece.potential_rotation = 0;
+      piece.potential_shape = piece.shapes[0];
     }
-
+    
     if(this.validateMove(state)){
-      console.log('rotate');
+      piece.shape = piece.potential_shape;
       piece.rotation = piece.potential_rotation;
     } else {
       //reset
       piece.potential_rotation = piece.rotation;
+      piece.potential_shape = piece.shape;
     }
     return piece;
   },
@@ -115,24 +120,24 @@ const AppActions = {
     var landed = state.landed;
 
     //TODO
-    for (let row = 0; row < piece.shapes[piece.rotation].length; row++) {
-      for (let col = 0; col < piece.shapes[piece.rotation][row].length; col++) {
-        if (piece.shapes[piece.rotation][row][col] !== 0) {
-          landed[row + piece.pos_y][col + piece.pos_x] = piece.shapes[piece.rotation][row][col];
+    for (let row = 0; row < piece.shape.length; row++) {
+      for (let col = 0; col < piece.shape[row].length; col++) {
+        if (piece.shape[row][col] !== 0) {
+          landed[row + piece.pos_y][col + piece.pos_x] = piece.shape[row][col];
         }
       }
     }
     state.score = state.score + 10;
-    state.piece = Pieces.getPiece('I', 0);
+    state.piece = this.spawnPiece();
     console.log(state.piece);
     return state;
   },
 
-  spawnPiece(state){
+  spawnPiece(){
     var list = ['O', 'J', 'L', 'I', 'T', 'Z', 'S'];
-    var rand = Math.floor(Math.random() * 7);
-    console.log('spawn piece: ' + list[rand]);
-    return Pieces.getPiece(list[rand], 0);
+    var randShape = list[Math.floor(Math.random() * 7)];
+    console.log('spawn piece: ' + randShape);
+    return new Piece(randShape, 0);
   }
 };
 

@@ -23,25 +23,35 @@ class Reactris extends Component {
       
       board: BoardController.getNewBoard(),
 
-      landed: BoardController.getNewBoard(),
+      landed: [[0,0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,1,0,0],
+              [0,0,0,0,0,0,0,1,0,0],
+              [0,0,1,0,0,0,0,1,0,0],
+              [1,1,1,0,0,0,0,1,0,0]],
 
-      piece: Pieces.getPiece('T',0)
+      piece: new Piece('I', 0)
     }
 
     this.state.board = BoardController.drawBoard(this.state);
 
     //DEBUG--------
-    var p = new Piece('Z',1);
-    var p2 = Pieces2.getPiece('Z', 1);
-    console.log(p);
-    console.log(p2);
-    p.pos_y = 4;
+    console.log(this.state.piece);
     //DEBUG--------
   }
 
   componentDidMount(){
     this.attachEventListeners();
-    //this.spawnPiece();
     //this.startGame();
   }
 
@@ -99,7 +109,7 @@ class Reactris extends Component {
           </div>
           <div className="debug-board">
             Piece Debug
-            <BoardRenderer state={this.state.piece.shapes[this.state.piece.rotation]}/>
+            <BoardRenderer state={this.state.piece.shape}/>
           </div>
         </div>
       </div>
@@ -134,7 +144,7 @@ class Reactris extends Component {
           break;
         //For TESTING
         case 'Enter':
-          this.setPieceState(Actions.spawnPiece(this.state));
+          this.setPieceState(Actions.spawnPiece());
           break;
         case 'Escape':
           this.setState({paused: Actions.pause(this.state)});
