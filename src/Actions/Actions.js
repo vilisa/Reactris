@@ -1,4 +1,3 @@
-import Pieces2 from '../Pieces/Pieces2.js';
 import Piece from '../Pieces/Piece.js';
 
 const AppActions = {
@@ -13,6 +12,8 @@ const AppActions = {
   isSpaceAvailable(state){
     var piece = state.piece;
     var landed = state.landed;
+
+    //try catch to handle piece going over board
     try {
       for (let row = 0; row < piece.potential_shape.length; row++) {
         for (let col = 0; col < piece.potential_shape[row].length; col++) {
@@ -119,7 +120,7 @@ const AppActions = {
     var piece = state.piece;
     var landed = state.landed;
 
-    //TODO
+    //draw piece to landed board
     for (let row = 0; row < piece.shape.length; row++) {
       for (let col = 0; col < piece.shape[row].length; col++) {
         if (piece.shape[row][col] !== 0) {
@@ -129,53 +130,17 @@ const AppActions = {
     }
     state.score = state.score + 10;
     state.piece = this.spawnPiece();
-    console.log(state.piece);
     return state;
   },
 
   spawnPiece(){
     var list = ['O', 'J', 'L', 'I', 'T', 'Z', 'S'];
     var randShape = list[Math.floor(Math.random() * 7)];
-    console.log('spawn piece: ' + randShape);
     return new Piece(randShape, 0);
   }
 };
 
 export default AppActions;
-
-
-
-  /*gi
-  isWithinBoundaries(state){
-    var piece = state.piece;
-    var height = state.board.length;
-    var width = state.board[0].length;
-    var pw = piece.shapes[piece.potential_rotation][0].length;
-    var ph = piece.shapes[piece.potential_rotation].length;
-    var py = piece.potential_pos_y;
-    var px = piece.potential_pos_x;
-
-    console.log('h:' + height);
-    console.log('width:' + width);
-    console.log('pw:' + pw);
-    console.log('ph:' + ph);
-    console.log('py:' + py);
-    console.log('px:' + px);
-
-    console.log('piece width' + Pieces.getPieceWidth(piece));
-    console.log('piece height' + Pieces.getPieceHeight(piece));
-
-    //width check
-    if(width < (px + pw) || (px < 0)){
-      return false;
-    }
-    //height check
-    if(height < (py + ph) || (py < 0)){
-      return false
-    }
-    return true;
-  },
-  */
 
 
   /*

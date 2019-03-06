@@ -115,7 +115,7 @@ const S = [
    [0,0,0]],
 ];
 
-const Pieces2 = {
+const Pieces = {
   getShape(type, rotation){
     console.log('getShape(' + type + ',' + rotation + ')');
     var shapes;
@@ -181,4 +181,4 @@ const Pieces2 = {
   }
 };
 
-export default Pieces2;
+export default Pieces;

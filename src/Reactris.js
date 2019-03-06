@@ -4,13 +4,11 @@ import Settings from './Settings/Settings.js';
 import Actions from './Actions/Actions.js';
 import BoardController from './Components/BoardController.js';
 import BoardRenderer from './Components/BoardRenderer.js';
-import Pieces from './Components/Pieces.js';
+import Pieces from './Pieces/Pieces.js';
+import Piece from './Pieces/Piece.js';
 import Info from './Components/Info.js';
 import Controls from './Components/Controls.js';
 import Menu from './Components/Menu.js';
-
-import Pieces2 from './Pieces/Pieces2.js';
-import Piece from './Pieces/Piece.js';
 
 class Reactris extends Component {
   constructor(props) {
@@ -23,24 +21,9 @@ class Reactris extends Component {
       
       board: BoardController.getNewBoard(),
 
-      landed: [[0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,1,0,0],
-              [0,0,0,0,0,0,0,1,0,0],
-              [0,0,1,0,0,0,0,1,0,0],
-              [1,1,1,0,0,0,0,1,0,0]],
+      landed: BoardController.getNewBoard(),
 
-      piece: new Piece('I', 0)
+      piece: Actions.spawnPiece()
     }
 
     this.state.board = BoardController.drawBoard(this.state);

@@ -1,10 +1,10 @@
-import Pieces2 from "./Pieces2.js";
+import Pieces from "./Pieces.js";
 import Settings from '../Settings/Settings.js';
 
 class Piece {
   constructor(stringShape, rotation) {
-    this._shape = Pieces2.getShape(stringShape, rotation);
-    this._shapes = Pieces2.getRotations(stringShape);
+    this._shape = Pieces.getShape(stringShape, rotation);
+    this._shapes = Pieces.getRotations(stringShape);
     this._rotation = rotation;
     this._pos_y = 0;
     this._pos_x = Math.round(Settings.GAME_WIDTH / 2 - 2); //center
