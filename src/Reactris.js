@@ -18,18 +18,17 @@ class Reactris extends Component {
       score: 0,
       linesCleared: 0,
       paused: false,
-      
+      gameOver: false,
+      intervalID: null,
       board: BoardController.getNewBoard(),
-
       landed: BoardController.getNewBoard(),
-
       piece: Actions.spawnPiece()
     }
 
     this.state.board = BoardController.drawBoard(this.state);
 
     //DEBUG--------
-    
+
     //DEBUG--------
   }
 
@@ -41,31 +40,59 @@ class Reactris extends Component {
   componentDidUpdate(){
 
   }
+
+  startGame(){
+    //start tick, move piece down with each tick
+    var intervalID = setInterval(() => {
+      this.setState(Actions.moveDown(this.state));
+      this.drawBoard();
+    }, Settings.GAME_TICK);
+    
+    this.setState({intervalID: intervalID});
+  }
   
   drawBoard(){
-    console.log('drawboard');
     this.setState({board: BoardController.drawBoard(this.state)});
   }
 
   setPieceState(state){
-    this.setState({piece: state});
-    this.drawBoard();
+    this.setState({piece: state}, function(){
+      //callback
+      this.drawBoard();
+    });
   }
 
-  setStateVariable(value){
-    this.setState(value);
+  setWholeState(state){
+    this.setState(state, function(){
+      //callback
+      this.drawBoard();
+    });
   }
 
-  setLanded(state){
-    this.setState({landed: state.landed, piece: state.piece,  score: state.score});
+  pause(){
+    let paused = Actions.pause(this.state);
+    this.setState({paused: paused});
+    if(paused){
+      clearInterval(this.state.intervalID);
+    } else {
+      this.startGame();
+    }
   }
 
+  //render helper
   paused(){
     if(this.state.paused){
       return (
           <Menu />
       );
     }
+  }
+
+  reset(){
+    this.setState(Actions.reset(), function(){
+      //callback
+      this.setState({board: BoardController.drawBoard(this.state)});
+    });
   }
 
   render() {
@@ -81,7 +108,12 @@ class Reactris extends Component {
               <Info state={this.state}/>
             </div>
             <div className="controls">
-              <Controls state={this.state} movePiece={p=>{this.setPieceState(p)}} setStateVariable={p=>{this.setStateVariable(p)}}/>
+              <Controls state={this.state} 
+              movePiece={p=>{this.setPieceState(p)}}
+              setState={s=>{this.setWholeState(s)}}
+              pause={()=>{this.pause()}}
+              reset={()=>{this.reset()}}
+              />
             </div>
           </div>
         </div>
@@ -114,7 +146,7 @@ class Reactris extends Component {
           this.setPieceState(Actions.rotate(this.state));
           break;
         case 'ArrowDown':
-          this.setState(Actions.moveDown(this.state));
+          this.setWholeState(Actions.moveDown(this.state));
           break;
         case 'ArrowLeft':
           this.setPieceState(Actions.moveLeft(this.state));
@@ -125,26 +157,14 @@ class Reactris extends Component {
         case 'Space':
           this.setPieceState(Actions.hardDrop(this.state));
           break;
-        //For TESTING
-        case 'Enter':
-          this.setPieceState(Actions.spawnPiece());
-          break;
         case 'Escape':
-          this.setState({paused: Actions.pause(this.state)});
+          this.pause();
           break;
         default:
           break;
       }
-      this.drawBoard();
     });
   }
 }
 
 export default Reactris;
-
-/*
-<div className="screen">
-                <BoardRenderer state={this.state.board}/>
-                <Info state={this.state}/>
-              </div>
-*/

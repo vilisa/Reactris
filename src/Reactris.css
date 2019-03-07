@@ -33,10 +33,10 @@
 }
 
 .screen{
-  height: 100%;
   display: flex;
-  position: relative;
   flex-direction: column;
+  height: 100%;
+  position: relative;
   margin-bottom: 20px;
   padding: 5px;
   background: #9ead86;
@@ -48,6 +48,8 @@
   border-color: #987f0f rgb(255,210,0) rgb(255,205,0) #987f0f;
 }
 #scaler{
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: 0; /*calculated via js to keep board aspect ratio*/
   height: 100%;

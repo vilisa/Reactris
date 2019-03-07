@@ -1,9 +1,10 @@
 import Piece from '../Pieces/Piece.js';
+import BoardController from '../Components/BoardController.js';
 
 const AppActions = {
   
   validateMove(state){
-    if(!state.paused && state.piece && this.isSpaceAvailable(state)){
+    if(!state.paused && !state.gameOver && state.piece && this.isSpaceAvailable(state)){
       return true;
     }
     return false;
@@ -108,36 +109,62 @@ const AppActions = {
     return state.paused;
   },
 
-  clearPiece(state){
-    state.piece = null;
-    return state.piece; 
+  reset(){
+    let newState = {
+      score: 0,
+      linesCleared: 0,
+      paused: false,
+      gameOver: false,
+      board: BoardController.getNewBoard(),
+      landed: BoardController.getNewBoard(),
+      piece: this.spawnPiece()
+    };
+    return newState;
   },
 
   landPiece(state){
-    if(!state.piece) return;
+    if(!state.paused && !state.gameOver && state.piece){
+      console.log('land piece');
+      var piece = state.piece;
+      var landed = state.landed;
 
-    console.log('land piece');
-    var piece = state.piece;
-    var landed = state.landed;
-
-    //draw piece to landed board
-    for (let row = 0; row < piece.shape.length; row++) {
-      for (let col = 0; col < piece.shape[row].length; col++) {
-        if (piece.shape[row][col] !== 0) {
-          landed[row + piece.pos_y][col + piece.pos_x] = piece.shape[row][col];
+      //draw piece to landed board
+      for (let row = 0; row < piece.shape.length; row++) {
+        for (let col = 0; col < piece.shape[row].length; col++) {
+          if (piece.shape[row][col] !== 0) {
+            landed[row + piece.pos_y][col + piece.pos_x] = piece.shape[row][col];
+          }
         }
       }
+      state.score = state.score + 10;
+
+      //check game over
+      if(this.checkGameOver(state)){
+        console.log('Game over');
+        state.gameOver = true;
+      } else {
+        state.piece = this.spawnPiece();
+      }
     }
-    state.score = state.score + 10;
-    state.piece = this.spawnPiece();
     return state;
+  },
+
+  checkGameOver(state){
+    var landed = state.landed;
+    for (let col = 0; col < landed[0].length; col++){
+      if(landed[0][col] !== 0){
+        return true;
+      }
+    }
+    return false;
   },
 
   spawnPiece(){
     var list = ['O', 'J', 'L', 'I', 'T', 'Z', 'S'];
     var randShape = list[Math.floor(Math.random() * 7)];
     return new Piece(randShape, 0);
-  }
+  },
+
 };
 
 export default AppActions;

@@ -117,7 +117,6 @@ const S = [
 
 const Pieces = {
   getShape(type, rotation){
-    console.log('getShape(' + type + ',' + rotation + ')');
     var shapes;
     var piece;
 

@@ -7,7 +7,7 @@ class Piece {
     this._shapes = Pieces.getRotations(stringShape);
     this._rotation = rotation;
     this._pos_y = 0;
-    this._pos_x = Math.round(Settings.GAME_WIDTH / 2 - 2); //center
+    this._pos_x = Math.round((Settings.GAME_WIDTH / 2 - 1) - this.getOffset()); //center piece
 
     this._potential_shape = this._shape;
     this._potential_rotation = this._rotation;
@@ -45,7 +45,7 @@ class Piece {
   }
   
 
-  //Example: setShape(0);
+  //Example: shape = shapes[1];
   set shape(shape){
     this._shape = shape;
   }
@@ -74,6 +74,21 @@ class Piece {
   set potential_pos_x(x){
     this._potential_pos_x = x;
   }
+
+  getOffset(){
+    let offset = 1000;
+    let rowOffset = 0;
+    for (let row = 0; row < this.shape.length; row++) {
+      rowOffset = 0;
+      for (let col = 0; col < this.shape[row].length; col++) {
+        if (this.shape[row][col] !== 0) break;
+        rowOffset++;
+      }
+      if(rowOffset < offset) offset = rowOffset;
+    }
+    return offset;
+  }
+
 }
 
 export default Piece;

@@ -13,6 +13,8 @@ class Menu extends Component {
             width: {Settings.GAME_WIDTH}
             <br/>
             height: {Settings.GAME_HEIGHT}
+            <br/>
+            Tick: {Settings.GAME_TICK}
           </div>
         </div>
       </div>
