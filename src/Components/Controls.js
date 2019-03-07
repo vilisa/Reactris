@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Actions from '../Actions/Actions.js';
 import './css/Controls.css';
+import Settings from '../Settings/Settings.js';
 
 class Controls extends Component {
   constructor(props) {
@@ -14,10 +15,9 @@ class Controls extends Component {
     }
   }
 
+  //start holding
   start(arrow){
-    console.log('start: ' + arrow);
-    var timeoutID = setInterval(this.holding, 250);
-    //var timeoutID = setInterval(this.holding, 250, arrow);
+    var timeoutID = setInterval(this.holding, Settings.MOVEMENT_INTERVAL, arrow);
 
     switch(arrow){
       case 'up':
@@ -37,8 +37,8 @@ class Controls extends Component {
     }
   }
 
+  //stop holding
   stop(arrow){
-    console.log('stop: ' + arrow);
     switch(arrow){
       case 'up':
         clearTimeout(this.state.arrow_up_interval);
@@ -57,8 +57,24 @@ class Controls extends Component {
     }
   }
 
-  holding(arrow){
-    console.log('holding: ' + arrow);
+  //while holding
+  holding = (arrow) => {
+    switch(arrow){
+      case 'up':
+        this.props.movePiece(Actions.rotate(this.props.state));
+        break;
+      case 'down':
+        this.props.setState(Actions.moveDown(this.props.state))
+        break;
+      case 'left':
+        this.props.movePiece(Actions.moveLeft(this.props.state))
+        break;
+      case 'right':
+        this.props.movePiece(Actions.moveRight(this.props.state))
+        break;
+      default:
+        break;
+    }
   }
   
   render() {
@@ -77,20 +93,38 @@ class Controls extends Component {
         <div className="arrows">
           <center>
             <div className="up">
-              <button className="arrow-up" id="arrow-up" onMouseDown={() => this.start('up')} onMouseUp={() => this.stop('up')}></button>
+              <button className="arrow-up" id="arrow-up"
+                onClick={() => this.props.movePiece(Actions.rotate(this.props.state))}
+                onMouseDown={() => this.start('up')} 
+                onMouseUp={() => this.stop('up')}
+                ontouchstart={() => this.start('up')}
+                ontouchend={() => this.stop('down')}
+              />
             </div>
             <div className="left-right">
-              <button className="arrow-left" onClick={() => this.props.movePiece(Actions.moveLeft(this.props.state))}></button>
+              <button className="arrow-left"
+                onClick={() => this.props.movePiece(Actions.moveLeft(this.props.state))}
+                onMouseDown={() => this.start('left')} 
+                onMouseUp={() => this.stop('left')}
+                />
               <span className="spacer">
                 <i className="up"/>
                 <i className="left"/>
                 <i className="right"/>
                 <i className="down"/>
               </span>
-              <button className="arrow-right" onClick={() => this.props.movePiece(Actions.moveRight(this.props.state))}></button>
+              <button className="arrow-right"
+                onClick={() => this.props.movePiece(Actions.moveRight(this.props.state))}
+                onMouseDown={() => this.start('right')} 
+                onMouseUp={() => this.stop('right')}
+              />
             </div>
             <div className="down">
-              <button className="arrow-down" onClick={() => this.props.setState(Actions.moveDown(this.props.state))}></button>
+              <button className="arrow-down" 
+                onClick={() => this.props.setState(Actions.moveDown(this.props.state))}
+                onMouseDown={() => this.start('down')}
+                onMouseUp={() => this.stop('down')}
+              />
             </div>
           </center>
         </div>
