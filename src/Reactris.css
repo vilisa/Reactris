@@ -1,7 +1,6 @@
 .App {
   text-align: center;
 }
-
 #root{
   display: flex;
   justify-content: center;
@@ -92,6 +91,7 @@
 .empty{
   border-color: #879372;
 }
+
 .debug-container{
   position: absolute;
   right: 0;

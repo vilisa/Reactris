@@ -34,7 +34,7 @@ class Reactris extends Component {
 
   componentDidMount(){
     this.attachEventListeners();
-    //this.startGame();
+    this.startGame();
   }
 
   componentDidUpdate(){
@@ -135,6 +135,14 @@ class Reactris extends Component {
     //Window Rezise
     window.onload = () => {BoardController.scaleBoard()};
     window.addEventListener("resize", BoardController.scaleBoard.bind(this));
+
+    //Touch start
+    window.addEventListener("touchstart", () => {
+      //disable context menu, so you can long press the buttons
+      document.oncontextmenu = function() {
+        return false;
+      }
+    });
 
     //Keyboard
     document.addEventListener('keydown', (event) => {

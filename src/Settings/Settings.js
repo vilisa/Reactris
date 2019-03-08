@@ -4,7 +4,7 @@ export default {
   GAME_HEIGHT: 16,
 
   //time interval to move down automatically, in ms
-  GAME_TICK: 500,
+  GAME_TICK: 750,
 
   //movement interval when holding buttons
   MOVEMENT_INTERVAL: 150

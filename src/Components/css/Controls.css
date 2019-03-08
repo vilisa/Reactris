@@ -1,5 +1,21 @@
+:focus{ 
+    outline: none; 
+}
+button::-moz-focus-inner {
+    border: 0;
+}
+    
+
 .controls{
     position: relative;
+    
+    /*disable text selection, to avoid opening keypad on mobile when pressing*/
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version */
 }
 .controls .container{
     position: relative;
@@ -12,13 +28,23 @@
     display: inline-block;
     width: 40px;
     height: 40px;
-    box-shadow: inset 0px 0px 15px rgba(0,0,0,0.5);
     text-align: center;
+    background: rgb(25,25,25);
+}
+.controls .spacer .arrows{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background: rgb(40,40,40);
+    box-shadow: inset 0px 0px 5px rgba(0,0,0,1);
+    border-radius: 30px;
+    margin: 0;
 }
 .controls .buttons{
     font-size: 13px;
     font-weight: 700;
     float: left;
+    padding: 2px;
 }
 .controls .button{
     display: inline-block;
@@ -37,20 +63,20 @@
     margin-bottom: 5px;
 }
 .controls .buttons button:active{
-    box-shadow: inset 0px 0px 10px black;
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.75);
 }
 
 
 
 .controls .arrows{
-    margin: 15px;
+    margin-left: 15px;
     float: right;
 }
 .controls .arrows .left-right{
     display: flex;
 }
 .controls .arrows button{
-    width: 30px;
+    width: 35px;
     height: 40px;
     font-size: 20px;
     border: none;
@@ -60,84 +86,26 @@
     text-align: center;
     padding: 0 10px;
     color: #ffffff;
-    background-color: black;
+    background: rgb(25,25,25);
     position: relative;
     display: inline-block;
+}
+.controls .arrows .arrow-up{
+    width: 40px;
+    height: 35px;
+}
+.controls .arrows .arrow-down{
+    width: 40px;
+    height: 35px;
 }
 .controls .arrows button:active{
     background-color:rgb(155,0,0);
 }
 
-/*Arrow Right*/
-.controls .arrows .arrow-right:after{
-    position: absolute;
-    right: -14px;
-    top: 0;
-    content: " ";
-    border-style: solid;
-    border-width: 20px 0 20px 15px;
-    border-color: transparent transparent transparent black;
-}
-.controls .arrows .arrow-right:active:after{
-    border-color: transparent transparent transparent rgb(155,0,0);
-}
-
-/*Arrow Left*/
-.controls .arrows .arrow-left:before{
-    position: absolute;
-    left: -14px;
-    top: 0;
-    content: " ";
-    border-style: solid;
-    border-width: 20px 0 20px 15px;
-    border-color: transparent transparent transparent black;
-    transform: rotate(-180deg);
-}
-.controls .arrows .arrow-left:active:before{
-    border-color: transparent transparent transparent rgb(155,0,0);
-}
-
-/*Arrow Up*/
-.controls .arrows .arrow-up{
-    width: 40px;
-    height: 30px;
-}
-.controls .arrows .arrow-up:before{
-    position: absolute;
-    top: -26.5px;
-    left: 13px;
-    content: " ";
-    border-style: solid;
-    border-width: 20px 0 20px 15px;
-    border-color: transparent transparent transparent black;
-    transform: rotate(-90deg);
-}
-.controls .arrows .arrow-up:active:before{
-    border-color: transparent transparent transparent rgb(155,0,0);
-}
-
-/*Arrow Down*/
-.controls .arrows .arrow-down{
-    width: 40px;
-    height: 30px;
-}
-.controls .arrows .arrow-down:after{
-    position: absolute;
-    bottom: -26.5px;
-    left: 13px;
-    content: " ";
-    border-style: solid;
-    border-width: 20px 0 20px 15px;
-    border-color: transparent transparent transparent black;
-    transform: rotate(90deg);
-}
-.controls .arrows .arrow-down:active:after{
-    border-color: transparent transparent transparent rgb(155,0,0);
-}
 
 /*mini arrows*/
 i{
-    border: solid black;
+    border: solid white;
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 2px;

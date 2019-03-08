@@ -82,11 +82,15 @@ class Controls extends Component {
       <div className="container">
         <div className="buttons">
           <div className="button">
-            <button onClick={() => this.props.pause()}></button>
+            <button 
+              onClick={() => this.props.pause()}
+            />
             <div>Pause</div>
           </div>
           <div className="button">
-            <button className="reset" onClick={() => this.props.reset()}></button>
+            <button className="reset" 
+              onClick={() => this.props.reset()}
+            />
             <div>Reset</div>
           </div>
         </div>
@@ -95,35 +99,35 @@ class Controls extends Component {
             <div className="up">
               <button className="arrow-up" id="arrow-up"
                 onClick={() => this.props.movePiece(Actions.rotate(this.props.state))}
-                onMouseDown={() => this.start('up')} 
-                onMouseUp={() => this.stop('up')}
-                ontouchstart={() => this.start('up')}
-                ontouchend={() => this.stop('down')}
+                onPointerDown={() => this.start('up')}
+                onPointerUp={() => this.stop('up')}
               />
             </div>
             <div className="left-right">
               <button className="arrow-left"
                 onClick={() => this.props.movePiece(Actions.moveLeft(this.props.state))}
-                onMouseDown={() => this.start('left')} 
-                onMouseUp={() => this.stop('left')}
+                onPointerDown={() => this.start('left')} 
+                onPointerUp={() => this.stop('left')}
                 />
               <span className="spacer">
-                <i className="up"/>
-                <i className="left"/>
-                <i className="right"/>
-                <i className="down"/>
+                <div className="arrows">
+                  <i className="up"/>
+                  <i className="left"/>
+                  <i className="right"/>
+                  <i className="down"/>
+                </div>
               </span>
               <button className="arrow-right"
                 onClick={() => this.props.movePiece(Actions.moveRight(this.props.state))}
-                onMouseDown={() => this.start('right')} 
-                onMouseUp={() => this.stop('right')}
+                onPointerDown={() => this.start('right')} 
+                onPointerUp={() => this.stop('right')}
               />
             </div>
             <div className="down">
               <button className="arrow-down" 
                 onClick={() => this.props.setState(Actions.moveDown(this.props.state))}
-                onMouseDown={() => this.start('down')}
-                onMouseUp={() => this.stop('down')}
+                onPointerDown={() => this.start('down')}
+                onPointerUp={() => this.stop('down')}
               />
             </div>
           </center>

@@ -13,23 +13,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #20262E;
+  font-family: Helvetica;
 }
-
 #root{
   width: 100%;
   height: 100%;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-body {
-  background: #20262E;
-  font-family: Helvetica;
-}
-
 #app {
   background: #fff;
   border-radius: 4px;
@@ -37,20 +27,6 @@ body {
   transition: all 0.2s;
 }
 
-li {
-  margin: 8px 0;
-}
-
-h2 {
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.done {
-  color: rgba(0, 0, 0, 0.3);
-  text-decoration: line-through;
-}
-
-input {
-  margin-right: 5px;
+*:focus {
+  outline: none;
 }
