@@ -1,7 +1,12 @@
 import Piece from '../Pieces/Piece.js';
 import BoardController from '../Components/BoardController.js';
+import Settings from '../Settings/Settings.js';
 
 const AppActions = {
+
+  log(msg){
+    if(Settings.DEBUG) console.log(msg);
+  },
   
   validateMove(state){
     if(!state.paused && !state.gameOver && state.piece && this.isSpaceAvailable(state)){
@@ -36,7 +41,7 @@ const AppActions = {
     state.piece.potential_pos_y = state.piece.pos_y + 1;
 
     if(this.validateMove(state)){
-      console.log('Down');
+      this.log('Down');
       state.piece.pos_y = state.piece.potential_pos_y;
     } else {
       //cant move down, land the block in place
@@ -50,7 +55,7 @@ const AppActions = {
     piece.potential_pos_x = piece.pos_x - 1;
 
     if(this.validateMove(state)){
-      console.log('Left');
+      this.log('Left');
       piece.pos_x = piece.potential_pos_x;
     } else {
       //reset
@@ -64,7 +69,7 @@ const AppActions = {
     piece.potential_pos_x = piece.pos_x  + 1;
 
     if(this.validateMove(state)){
-      console.log('Right');
+      this.log('Right');
       piece.pos_x = piece.potential_pos_x;
     } else {
       //reset
@@ -74,10 +79,20 @@ const AppActions = {
   },
 
   hardDrop(state) {
-    if(this.validateMove(state)){
-      console.log('Drop');
-      //TODO
+    this.log('Drop');
+    while(true){
+      state.piece.potential_pos_y = state.piece.pos_y + 1;
+
+      if(this.validateMove(state)){
+        this.log('Down');
+        state.piece.pos_y = state.piece.potential_pos_y;
+      } else {
+        //cant move down, land the block in place
+        this.landPiece(state);
+        break;
+      }
     }
+    return state;
   },
 
   rotate(state) {
@@ -105,7 +120,7 @@ const AppActions = {
 
   pause(state) {
     state.paused = !state.paused;
-    (state.paused ? console.log('Pause') : console.log('Resume') );
+    (state.paused ? this.log('Pause') : this.log('Resume') );
     return state.paused;
   },
 
@@ -124,7 +139,7 @@ const AppActions = {
 
   landPiece(state){
     if(!state.paused && !state.gameOver && state.piece){
-      console.log('land piece');
+      this.log('land piece');
       var piece = state.piece;
       var landed = state.landed;
 
@@ -142,10 +157,7 @@ const AppActions = {
       this.clearLines(state);
 
       //check game over
-      if(this.checkGameOver(state)){
-        console.log('Game over');
-        state.gameOver = true;
-      } else {
+      if(!this.checkGameOver(state)){
         state.piece = this.spawnPiece();
       }
     }
@@ -156,6 +168,8 @@ const AppActions = {
     var landed = state.landed;
     for (let col = 0; col < landed[0].length; col++){
       if(landed[0][col] !== 0){
+        this.log('Game over');
+        state.gameOver = true;
         return true;
       }
     }
@@ -163,7 +177,7 @@ const AppActions = {
   },
 
   clearLines(state){
-    console.log('clear Lines');
+    this.log('clear Lines');
     var landed = state.landed;
     for (var row = 0; row < landed.length; row++) {
       var isFilled = true;
@@ -172,7 +186,7 @@ const AppActions = {
       }
       if(isFilled){
         landed.splice(row, 1);
-        landed.unshift([0,0,0,0,0,0,0,0,0,0]);
+        landed.unshift(BoardController.getNewRow());
         state.linesCleared++;
         state.score = state.score + 100;
       }

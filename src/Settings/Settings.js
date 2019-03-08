@@ -7,5 +7,8 @@ export default {
   GAME_TICK: 750,
 
   //movement interval when holding buttons
-  MOVEMENT_INTERVAL: 150
+  MOVEMENT_INTERVAL: 150,
+
+  //Enable Debug
+  DEBUG: false
 };

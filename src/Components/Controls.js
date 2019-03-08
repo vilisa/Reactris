@@ -93,6 +93,12 @@ class Controls extends Component {
             />
             <div>Reset</div>
           </div>
+          <div className="button drop">
+            <button 
+              onClick={() => this.props.setState(Actions.hardDrop(this.props.state))}
+            />
+            <div>Drop</div>
+          </div>
         </div>
         <div className="arrows">
           <center>

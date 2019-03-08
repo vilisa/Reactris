@@ -10,6 +10,13 @@ class BoardController {
     }
 
     /*
+    * returns a new empty row, with current board width
+    */
+    static getNewRow(){
+      return Array(Settings.GAME_WIDTH).fill(0);
+    }
+
+    /*
     * helper function to calculate boards current state, with piece position and landed blocks
     */
     static drawBoard(state){

@@ -83,7 +83,7 @@ class Reactris extends Component {
   paused(){
     if(this.state.paused){
       return(
-          <Menu />
+        <Menu />
       );
     }
   }
@@ -175,7 +175,7 @@ class Reactris extends Component {
           this.setPieceState(Actions.moveRight(this.state));
           break;
         case 'Space':
-          this.setPieceState(Actions.hardDrop(this.state));
+          this.setWholeState(Actions.hardDrop(this.state));
           break;
         case 'Escape':
           this.pause();
