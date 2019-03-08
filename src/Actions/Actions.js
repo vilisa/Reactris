@@ -138,6 +138,9 @@ const AppActions = {
       }
       state.score = state.score + 10;
 
+      //clear lines
+      this.clearLines(state);
+
       //check game over
       if(this.checkGameOver(state)){
         console.log('Game over');
@@ -157,6 +160,23 @@ const AppActions = {
       }
     }
     return false;
+  },
+
+  clearLines(state){
+    console.log('clear Lines');
+    var landed = state.landed;
+    for (var row = 0; row < landed.length; row++) {
+      var isFilled = true;
+      for (var col = 0; col < landed[row].length; col++) {
+          if (landed[row][col] === 0) isFilled = false;
+      }
+      if(isFilled){
+        landed.splice(row, 1);
+        landed.unshift([0,0,0,0,0,0,0,0,0,0]);
+        state.linesCleared++;
+        state.score = state.score + 100;
+      }
+    }
   },
 
   spawnPiece(){

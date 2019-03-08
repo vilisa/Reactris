@@ -82,8 +82,19 @@ class Reactris extends Component {
   //render helper
   paused(){
     if(this.state.paused){
-      return (
+      return(
           <Menu />
+      );
+    }
+  }
+
+  //render helper
+  gameOver(){
+    if(this.state.gameOver){
+      return(
+      <div className="gameover">
+        <span>GAME OVER</span>
+      </div>
       );
     }
   }
@@ -102,6 +113,7 @@ class Reactris extends Component {
           <div className="reactris-container">
             <div className="screen">
               {this.paused()}
+              {this.gameOver()}
               <div id="scaler">
                 <BoardRenderer state={this.state.board}/>
               </div>
