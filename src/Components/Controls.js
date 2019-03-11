@@ -102,7 +102,7 @@ class Controls extends Component {
         </div>
         <div className="arrows">
           <center>
-            <div className="up">
+            <div className="up-container">
               <button className="arrow-up" id="arrow-up"
                 onClick={() => this.props.movePiece(Actions.rotate(this.props.state))}
                 onPointerDown={() => this.start('up')}
@@ -129,7 +129,7 @@ class Controls extends Component {
                 onPointerUp={() => this.stop('right')}
               />
             </div>
-            <div className="down">
+            <div className="down-container">
               <button className="arrow-down" 
                 onClick={() => this.props.setState(Actions.moveDown(this.props.state))}
                 onPointerDown={() => this.start('down')}
