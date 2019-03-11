@@ -49,19 +49,19 @@ class BoardController {
     }
 
     static scaleBoard(){
-      try {
         //scale board
-        let e = document.getElementById('scaler');
-        let ratio = Settings.GAME_WIDTH / Settings.GAME_HEIGHT;
-        e.style.width = e.offsetHeight * ratio + 'px';
+        let s = document.getElementById('scaler');
+        if(s){
+          let ratio = Settings.GAME_WIDTH / Settings.GAME_HEIGHT;
+          s.style.width = s.offsetHeight * ratio + 'px';
+        }
 
         //scale text
         let t = document.getElementById('gameover-text');
-        let ratio2 = 0.25;
-        t.style.fontSize = e.offsetWidth * ratio2 + 'px';
-      } catch (error) {
-        
-      }
+        if(t){
+          let ratio = 0.25;
+          t.style.fontSize = s.offsetWidth * ratio + 'px';
+        }
     }
 };
 

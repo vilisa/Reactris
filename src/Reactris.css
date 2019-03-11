@@ -37,6 +37,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 150px;
   position: relative;
   margin-bottom: 20px;
   padding: 5px;
@@ -75,7 +76,7 @@
   position: relative;
   margin: 0;
   border: 2px solid #879372;
-  padding: 0.8%; /*inside border*/
+  padding: 0.08em; /*inside border*/
 }
 .col::after{
   content: "";
@@ -113,7 +114,7 @@
   width:  100%;
   height: 100%;
   position: absolute;
-  z-index: 99;
+  z-index: 98;
   margin: -5px;
   text-align: center;
   justify-content: center;

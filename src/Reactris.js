@@ -42,7 +42,7 @@ class Reactris extends Component {
   }
 
   startGame(){
-    //start tick, move piece down with each tick
+    //start tick, move piece down with each tick'
     var intervalID = setInterval(() => {
       this.setState(Actions.moveDown(this.state));
       this.drawBoard();
@@ -83,7 +83,10 @@ class Reactris extends Component {
   paused(){
     if(this.state.paused){
       return(
-        <Menu />
+        <Menu
+        pause={()=>{this.pause()}}
+        reset={()=>{this.reset()}}
+        />
       );
     }
   }
@@ -93,9 +96,9 @@ class Reactris extends Component {
     if(this.state.gameOver){
       BoardController.scaleBoard();
       return(
-      <div className="gameover">
-        <span id="gameover-text">GAME<br/>OVER</span>
-      </div>
+        <div className="gameover">
+          <span id="gameover-text">GAME<br/>OVER</span>
+        </div>
       );
     }
   }
@@ -105,6 +108,7 @@ class Reactris extends Component {
       //callback
       this.setState({board: BoardController.drawBoard(this.state)});
     });
+    BoardController.scaleBoard();
   }
 
   render() {
