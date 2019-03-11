@@ -29,7 +29,6 @@ class Menu extends Component {
     let width = this.state.width;
     let height = this.state.height;
     let tick = this.state.tick;
-    let valid = false;
     
     if(width >= Settings.MINIMUM_WIDTH){
       Settings.GAME_WIDTH = parseInt(width);
@@ -52,7 +51,6 @@ class Menu extends Component {
       return;
     }
     this.props.reset();
-    this.props.pause();
   }
 
   increase(setting){

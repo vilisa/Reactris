@@ -37,11 +37,9 @@ class Reactris extends Component {
     this.startGame();
   }
 
-  componentDidUpdate(){
-
-  }
-
   startGame(){
+    clearInterval(this.state.intervalID);
+    
     //start tick, move piece down with each tick'
     var intervalID = setInterval(() => {
       this.setState(Actions.moveDown(this.state));
@@ -109,6 +107,7 @@ class Reactris extends Component {
       this.setState({board: BoardController.drawBoard(this.state)});
     });
     BoardController.scaleBoard();
+    this.startGame();
   }
 
   render() {
