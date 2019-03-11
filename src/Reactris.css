@@ -37,7 +37,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 200px;
+  min-height: 210px;
   position: relative;
   margin-bottom: 20px;
   padding: 5px;
@@ -122,11 +122,11 @@
 .gameover span{
   display: inline-block;
   vertical-align: middle;
-  line-height: normal;
+  line-height: 1;
   z-index: 100;
   align-self: center;
   font-weight: 800;
-  text-decoration: underline;
+  text-decoration: underline black;
   text-shadow: 0 0 20px black;
   -webkit-text-stroke: 1.5px #65704e;
 }
