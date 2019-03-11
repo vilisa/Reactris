@@ -51,36 +51,36 @@ class Menu extends Component {
                 <div class="number-input">
                   <button onClick={() => this.setState({width: this.state.width - 1})}>-</button>
                   <input
-                      name="width"
-                      type="number"
-                      value={this.state.width}
-                      onChange={this.handleChange}
-                    />
+                    name="width"
+                    type="number"
+                    value={this.state.width}
+                    onChange={this.handleChange}
+                  />
                   <button onClick={() => this.setState({width: this.state.width + 1})}>+</button>
                 </div>
                 <div class="number-input">
                   <button onClick={() => this.setState({height: this.state.height - 1})}>-</button>
                   <input
-                      name="height"
-                      type="number"
-                      value={this.state.height}
-                      onChange={this.handleChange}
-                    />
+                    name="height"
+                    type="number"
+                    value={this.state.height}
+                    onChange={this.handleChange}
+                  />
                   <button onClick={() => this.setState({height: this.state.height + 1})}>+</button>
                 </div>
                 <div class="number-input">
                   <button onClick={() => this.setState({tick: this.state.tick - 10})}>-</button>
                   <input
-                      name="tick"
-                      type="number"
-                      value={this.state.tick}
-                      onChange={this.handleChange}
-                    />
+                    name="tick"
+                    type="number"
+                    value={this.state.tick}
+                    onChange={this.handleChange}
+                  />
                   <button onClick={() => this.setState({tick: this.state.tick + 10})}>+</button>
                 </div>
               </div>
             </div>
-
+            
             <div className="controls">
               <button onClick={() => this.save()}>
                 Save

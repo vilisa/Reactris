@@ -12,7 +12,7 @@
   position: absolute;
   width: 80%;
   height: 60%;
-  min-height: 122px;
+  min-height: 170px;
   z-index: 100;
   background: #8e9d76;
   border: 5px solid #7F8E67;
@@ -43,7 +43,7 @@
 }
 .menu .settings .labels{
   margin-right: 5px;
-  line-height: 21px;
+  line-height: 31px;
 }
 .menu .settings .inputs{
   width: 100%;
@@ -53,7 +53,7 @@
 }
 
 .menu .controls{
-  margin-top: 5px;
+  margin-top: 10px;
   display: flex;
   justify-content: center;
 }
@@ -79,7 +79,7 @@ input[type=number]::-webkit-outer-spin-button {
 .number-input {
   display: inline-flex;
   color: #4F5E37;
-  height: 20px;
+  height: 30px;
   width: 100%;
   box-sizing: border-box;
   background: #86956E;
