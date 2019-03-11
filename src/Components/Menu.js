@@ -44,7 +44,7 @@ class Menu extends Component {
       return;
     }
 
-    if(tick > 0){
+    if(tick >= 0){
       Settings.GAME_TICK = parseInt(tick);
     } else {
       this.setState({msg: 'min tick: ' + 0});
