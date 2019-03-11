@@ -124,8 +124,6 @@
   line-height: normal;
   z-index: 100;
   align-self: center;
-
-  font-size: calc(1vw + 1vh + 1vmin);
   font-weight: 800;
   text-decoration: underline;
   text-shadow: 0 0 20px black;

@@ -49,9 +49,19 @@ class BoardController {
     }
 
     static scaleBoard(){
-      let el = document.getElementById('scaler');
-      let ratio = Settings.GAME_WIDTH / Settings.GAME_HEIGHT;
-      el.style.width = el.offsetHeight * ratio + 'px';
+      try {
+        //scale board
+        let e = document.getElementById('scaler');
+        let ratio = Settings.GAME_WIDTH / Settings.GAME_HEIGHT;
+        e.style.width = e.offsetHeight * ratio + 'px';
+
+        //scale text
+        let t = document.getElementById('gameover-text');
+        let ratio2 = 0.25;
+        t.style.fontSize = e.offsetWidth * ratio2 + 'px';
+      } catch (error) {
+        
+      }
     }
 };
 

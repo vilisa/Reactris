@@ -8,14 +8,6 @@ button::-moz-focus-inner {
 
 .controls{
     position: relative;
-
-    /*disable text selection, to avoid opening keypad on mobile when pressing*/
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version */
 }
 .controls .container{
     position: relative;

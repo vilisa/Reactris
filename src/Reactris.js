@@ -91,9 +91,10 @@ class Reactris extends Component {
   //render helper
   gameOver(){
     if(this.state.gameOver){
+      BoardController.scaleBoard();
       return(
       <div className="gameover">
-        <span>GAME OVER</span>
+        <span id="gameover-text">GAME<br/>OVER</span>
       </div>
       );
     }
