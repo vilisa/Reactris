@@ -4,6 +4,8 @@ This project was made as React training, and implements an oldschool styled Tetr
 When the game is paused you can change the board size to anythig you like, like 50x50 or 5x5. Or you can play a normal game.
 Also the rate at which the blocks automatically drop can be changed, these settings can lead to quite amusing games.
 
+Play here: https://vilisa.github.io/reactris
+
 ## Available Scripts
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
