@@ -13,6 +13,6 @@ export default {
   //movement interval when holding buttons
   MOVEMENT_INTERVAL: 150,
 
-  //Enable Debug
+  //Enable Debug logs
   DEBUG: false
 };

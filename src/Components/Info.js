@@ -12,8 +12,8 @@ class Info extends Component {
     }
   }
 
-  render() {
-    return (
+  render(){
+    return(
       <div className="info">
         {this.paused()}
         <span className="score">

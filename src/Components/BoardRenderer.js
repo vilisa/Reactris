@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 
 class BoardRenderer extends Component {
 
-  drawCol(value) {
+  drawCol(value){
     if (value === 0) {
       return <div className="col empty"></div>;
     }
     return <div className="col filled"></div>;
   }
 
-  render() {
-    return (
+  render(){
+    return(
       <div className="table">
         {this.props.state.map(row => (
           <div className="row" key={row.id}>

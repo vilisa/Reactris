@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Actions from '../Actions/Actions.js';
 import Settings from '../Settings/Settings.js';
 import './css/Menu.css';
 
 class Menu extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       msg: '',
       width: Settings.GAME_WIDTH,
@@ -13,6 +13,7 @@ class Menu extends Component {
       tick: Settings.GAME_TICK,
       number: 100
     };
+
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -94,8 +95,8 @@ class Menu extends Component {
     }
   }
 
-  render() {
-    return (
+  render(){
+    return(
       <div className="menu-container">
         <div className="menu">
           <h1>Settings</h1>
@@ -110,8 +111,8 @@ class Menu extends Component {
                 <label>Tick:</label>
               </div>
               <div className="inputs">
-                <div class="number-input">
-                  <button onClick={() => this.decrease('width')}>-</button>
+                <div className="number-input">
+                  <button onClick={() => this.decrease('width')} tabIndex="-1">-</button>
                   <input
                     name="width"
                     type="number"
@@ -119,10 +120,10 @@ class Menu extends Component {
                     onChange={this.handleChange}
                     min={Settings.MINIMUM_WIDTH}
                   />
-                  <button onClick={() => this.increase('width')}>+</button>
+                  <button onClick={() => this.increase('width')} tabIndex="-1">+</button>
                 </div>
-                <div class="number-input">
-                  <button onClick={() => this.decrease('height')}>-</button>
+                <div className="number-input">
+                  <button onClick={() => this.decrease('height')} tabIndex="-1">-</button>
                   <input
                     name="height"
                     type="number"
@@ -130,10 +131,10 @@ class Menu extends Component {
                     onChange={this.handleChange}
                     min={Settings.MINIMUM_HEIGHT}
                   />
-                  <button onClick={() => this.increase('height')}>+</button>
+                  <button onClick={() => this.increase('height')} tabIndex="-1">+</button>
                 </div>
-                <div class="number-input">
-                  <button onClick={() => this.decrease('tick')}>-</button>
+                <div className="number-input">
+                  <button onClick={() => this.decrease('tick')} tabIndex="-1">-</button>
                   <input
                     name="tick"
                     type="number"
@@ -141,7 +142,7 @@ class Menu extends Component {
                     onChange={this.handleChange}
                     min="0"
                   />
-                  <button onClick={() => this.increase('tick')}>+</button>
+                  <button onClick={() => this.increase('tick')} tabIndex="-1">+</button>
                 </div>
               </div>
             </div>

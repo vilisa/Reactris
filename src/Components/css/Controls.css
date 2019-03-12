@@ -52,7 +52,7 @@ button::-moz-focus-inner {
 }
 
 
-
+/*arrow keys, used to move piece*/
 .controls .arrows{
     margin: 5px;
     float: right;

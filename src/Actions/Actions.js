@@ -37,7 +37,7 @@ const AppActions = {
     }
   },
 
-  moveDown(state) {
+  moveDown(state){
     state.piece.potential_pos_y = state.piece.pos_y + 1;
 
     if(this.validateMove(state)){
@@ -50,7 +50,7 @@ const AppActions = {
     return state;
   },
 
-  moveLeft(state) {
+  moveLeft(state){
     var piece = state.piece;
     piece.potential_pos_x = piece.pos_x - 1;
 
@@ -64,7 +64,7 @@ const AppActions = {
     return piece;
   },
 
-  moveRight(state) {
+  moveRight(state){
     var piece = state.piece;
     piece.potential_pos_x = piece.pos_x  + 1;
 
@@ -78,7 +78,7 @@ const AppActions = {
     return piece;
   },
 
-  hardDrop(state) {
+  hardDrop(state){
     this.log('Drop');
     while(true){
       state.piece.potential_pos_y = state.piece.pos_y + 1;
@@ -95,7 +95,7 @@ const AppActions = {
     return state;
   },
 
-  rotate(state) {
+  rotate(state){
     var piece = state.piece;
     piece.potential_rotation = piece.rotation + 1;
 
@@ -118,7 +118,7 @@ const AppActions = {
     return piece;
   },
 
-  pause(state) {
+  pause(state){
     state.paused = !state.paused;
     (state.paused ? this.log('Pause') : this.log('Resume') );
     return state.paused;

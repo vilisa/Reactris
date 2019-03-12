@@ -4,8 +4,6 @@ import Settings from './Settings/Settings.js';
 import Actions from './Actions/Actions.js';
 import BoardController from './Components/BoardController.js';
 import BoardRenderer from './Components/BoardRenderer.js';
-import Pieces from './Pieces/Pieces.js';
-import Piece from './Pieces/Piece.js';
 import Info from './Components/Info.js';
 import Controls from './Components/Controls.js';
 import Menu from './Components/Menu.js';
@@ -24,12 +22,8 @@ class Reactris extends Component {
       landed: BoardController.getNewBoard(),
       piece: Actions.spawnPiece()
     }
-
+    
     this.state.board = BoardController.drawBoard(this.state);
-
-    //DEBUG--------
-
-    //DEBUG--------
   }
 
   componentDidMount(){
@@ -40,7 +34,7 @@ class Reactris extends Component {
   startGame(){
     clearInterval(this.state.intervalID);
     
-    //start tick, move piece down with each tick'
+    //start clock, move piece down with each tick
     var intervalID = setInterval(() => {
       this.setState(Actions.moveDown(this.state));
       this.drawBoard();
@@ -82,6 +76,7 @@ class Reactris extends Component {
     if(this.state.paused){
       return(
         <Menu
+        state={this.state}
         pause={()=>{this.pause()}}
         reset={()=>{this.reset()}}
         />
@@ -110,8 +105,8 @@ class Reactris extends Component {
     this.startGame();
   }
 
-  render() {
-    return (
+  render(){
+    return(
       <div className="main-container">
         <div className="gameboy">
           <div className="reactris-container">
@@ -147,7 +142,7 @@ class Reactris extends Component {
     )
   }
 
-  attachEventListeners() {
+  attachEventListeners(){
     //Window Rezise
     window.onload = () => {BoardController.scaleBoard()};
     window.addEventListener("resize", BoardController.scaleBoard.bind(this));
@@ -162,10 +157,10 @@ class Reactris extends Component {
 
     //Keyboard
     document.addEventListener('keydown', (event) => {
-      if(!this.state.piece) {
+      if(!this.state.piece){
         return;
       }
-      switch (event.code) {
+      switch(event.code){
         case 'ArrowUp':
           this.setPieceState(Actions.rotate(this.state));
           break;

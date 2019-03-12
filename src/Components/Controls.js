@@ -77,8 +77,8 @@ class Controls extends Component {
     }
   }
   
-  render() {
-    return (
+  render(){
+    return(
       <div className="container">
         <div className="buttons">
           <div className="button">
