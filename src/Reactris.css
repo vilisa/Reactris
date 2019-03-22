@@ -14,7 +14,6 @@
 
 .gameboy{
   display: inline-block;
-  padding: 45px;
   padding-top: 30px;
   padding-bottom: 20px;
   margin-top: 20px;
@@ -40,6 +39,8 @@
   min-height: 210px;
   position: relative;
   margin-bottom: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
   padding: 5px;
   background: #9ead86;
   border: 5px solid;
@@ -148,10 +149,5 @@
   }
   .debug-board{
     display: none;
-  }
-}
-@media(max-width: 333px){
-  .gameboy{
-    padding: 10px;
   }
 }

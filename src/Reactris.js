@@ -128,16 +128,6 @@ class Reactris extends Component {
             </div>
           </div>
         </div>
-        <div className="debug-container">
-          <div className="debug-board">
-            Landed Debug
-            <BoardRenderer state={this.state.landed}/>
-          </div>
-          <div className="debug-board">
-            Piece Debug
-            <BoardRenderer state={this.state.piece.shape}/>
-          </div>
-        </div>
       </div>
     )
   }
@@ -187,3 +177,16 @@ class Reactris extends Component {
 }
 
 export default Reactris;
+
+/*
+<div className="debug-container">
+  <div className="debug-board">
+    Landed Debug
+    <BoardRenderer state={this.state.landed}/>
+  </div>
+  <div className="debug-board">
+    Piece Debug
+    <BoardRenderer state={this.state.piece.shape}/>
+  </div>
+</div>
+*/
